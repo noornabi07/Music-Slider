@@ -1,0 +1,163 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "maps/music-slider",
+  "version": "1.0.0",
+  "title": "Music Slider",
+  "category": "widgets",
+  "description": "Add a dynamic music player to your WordPress site with the Music Player Slider Block for Gutenberg.",
+  "keywords": ["key1", "key2", "key3", "key4", "key5"],
+  "textdomain": "music-slider",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "albumItems": {
+      "type": "array",
+      "default": [{
+        "title": "Symphony",
+        "name": "Clean Bandit ft. Zara Larson",
+        "trackSrc": "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+        "coverSrc": "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
+        "youtubeSrc": "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
+      }]
+    },
+
+    "albumOptions":{
+      "type": "object",
+      "default": {
+        "openNewTab": true
+      }
+    },
+
+    "columns": {
+      "type": "object",
+      "default": {
+        "desktop": 3,
+        "tablet": 2,
+        "mobile": 1
+      }
+    },
+    "columnGap": {
+      "type": "string",
+      "default": "30px"
+    },
+    "rowGap": {
+      "type": "string",
+      "default": "40px"
+    },
+    "layout": {
+      "type": "string",
+      "default": "vertical"
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "width": {
+      "type": "string",
+      "default": "80%"
+    },
+    "background": {
+      "type": "object",
+      "default": {
+        "color": "#0000"
+      }
+    },
+    "content": {
+      "type": "string",
+      "default": "Content of the block",
+      "selector": ".prefixBlockName .content"
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontSize": 25
+      }
+    },
+    "color": {
+      "type": "string",
+      "default": "#333"
+    },
+    "colors": {
+      "type": "object",
+      "default": {
+        "color": "#333",
+        "bg": "#fff"
+      }
+    },
+    "img": {
+      "type": "object",
+      "default": {
+        "id": null,
+        "url": "",
+        "alt": "",
+        "title": ""
+      }
+    },
+    "isIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "icon": {
+      "type": "object",
+      "default": {
+        "class": "fa-brands fa-wordpress"
+      }
+    },
+    "separator": {
+      "type": "object",
+      "default": {
+        "width": "20%",
+        "height": "2px",
+        "style": "solid",
+        "color": "#bbb"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "15px",
+        "right": "30px",
+        "bottom": "15px",
+        "left": "30px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "15px",
+        "left": "0px"
+      }
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "radius": "5px"
+      }
+    },
+    "shadow": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
