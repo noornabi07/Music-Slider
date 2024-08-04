@@ -97,7 +97,8 @@ const Edit = props => {
   const audioRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null); // Swiper ref
   const {
-    albumItems
+    albumItems,
+    albumControl
   } = attributes;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => (0,_Components_utils_functions__WEBPACK_IMPORTED_MODULE_2__.tabController)(), [isSelected]);
   const playPauseSong = () => {
@@ -187,18 +188,34 @@ const Edit = props => {
     onClick: () => {
       changeSong('backward');
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlineBackward, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, albumControl?.backward === "first" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlineBackward, null), albumControl?.backward === "third" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconBackward, null), albumControl?.backward === "five" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconFastBackward, null), albumControl?.backward === "seven" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.Icon283Backward, null), albumControl?.backward === "nine" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconBackwarded, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: playPauseSong
-  }, isPlaying ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlinePause, {
+  }, isPlaying ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, albumControl?.pause === "pFirst" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlinePause, {
     id: "controlIcon"
-  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiFillPlayCircle, {
+  }), albumControl?.pause === "pSecond" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPauseCircle, {
     id: "controlIcon"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), albumControl?.pause === "pThird" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPlayPause, {
+    id: "controlIcon"
+  }), albumControl?.pause === "pFour" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPauseFill, {
+    id: "controlIcon"
+  }), albumControl?.pause === "pFive" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconMediaPauseOutline, {
+    id: "controlIcon"
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, albumControl?.play === "sFirst" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiFillPlayCircle, {
+    id: "controlIcon"
+  }), albumControl?.play === "sSecond" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPauseOctagon, {
+    id: "controlIcon"
+  }), albumControl?.play === "sThird" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPlaySquare, {
+    id: "controlIcon"
+  }), albumControl?.play === "sFour" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPlay, {
+    id: "controlIcon"
+  }), albumControl?.play === "sFive" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconMusic_play_button, {
+    id: "controlIcon"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "forward",
     onClick: () => {
       changeSong('forward');
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlineForward, null)))))));
+  }, albumControl?.forward === "second" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.AiOutlineForward, null), albumControl?.forward === "four" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconPlayForwardSharp, null), albumControl?.forward === "six" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconFastForward, null), albumControl?.forward === "eight" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.Icon284Forward2, null), albumControl?.forward === "ten" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.IconForward, null)))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -222,8 +239,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.mjs");
+/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.mjs");
 /* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/options */ "./src/utils/options.js");
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/icons */ "./src/utils/icons.js");
+
 
 
 
@@ -237,9 +256,11 @@ const General = ({
   activeAlbum,
   setActiveAlbum
 }) => {
+  const [selectedForwardIcon, setSelectedForwardIcon] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const {
     albumItems,
-    albumOptions
+    albumOptions,
+    albumControl
   } = attributes;
   const {
     openNewTab
@@ -247,7 +268,7 @@ const General = ({
 
   // handle Image url change function 
   const handleImageUrlChange = (newUrl, index) => {
-    const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+    const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
       draft[index].coverSrc = newUrl;
     });
     setAttributes({
@@ -255,7 +276,7 @@ const General = ({
     });
   };
   const removeAlbum = idx => {
-    const newItemByRemove = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+    const newItemByRemove = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
       draft.splice(idx, 1);
     });
     setAttributes({
@@ -263,7 +284,7 @@ const General = ({
     });
   };
   const addNewAlbum = () => {
-    const newAlbumItem = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+    const newAlbumItem = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
       draft.push(_utils_options__WEBPACK_IMPORTED_MODULE_4__.newItems);
     });
     setAttributes({
@@ -274,14 +295,41 @@ const General = ({
 
   // Duplicate Function
   const duplicateAlbum = (slide, index) => {
-    const newArray = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+    const newArray = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
       draft.splice(index, 0, slide);
     });
     setAttributes({
       albumItems: newArray
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+
+  // handle Icon change function
+  const handleChangeIcon = (prevValue, nextValue) => {
+    const newAlbumControl = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumControl, draft => {
+      draft.backward = prevValue;
+      draft.forward = nextValue;
+    });
+    setAttributes({
+      albumControl: newAlbumControl
+    });
+  };
+  const handlePauseChangeIcon = name => {
+    const newIcon = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumControl, draft => {
+      draft.pause = name;
+    });
+    setAttributes({
+      albumControl: newIcon
+    });
+  };
+  const handlePlayChangeIcon = name => {
+    const newIcon = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumControl, draft => {
+      draft.play = name;
+    });
+    setAttributes({
+      albumControl: newIcon
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     className: "bPlPanelBody addRemoveItems editItem",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Albums', 'music-slider'),
     initialOpen: false
@@ -323,7 +371,7 @@ const General = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Track Source Url", "music-slider"),
       value: albumItems[index].trackSrc,
       onChange: newTrack => {
-        const newSlideItems = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+        const newSlideItems = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
           draft[index].trackSrc = newTrack;
         });
         setAttributes({
@@ -335,7 +383,7 @@ const General = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Track Title", "music-slider"),
       value: albumItems[index].title,
       onChange: newTitle => {
-        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
           draft[index].title = newTitle;
         });
         setAttributes({
@@ -347,7 +395,7 @@ const General = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Track Name", "music-slider"),
       value: albumItems[index].name,
       onChange: newName => {
-        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
           draft[index].name = newName;
         });
         setAttributes({
@@ -359,7 +407,7 @@ const General = ({
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("YouTube Source", "music-slider"),
       value: albumItems[index].youtubeSrc,
       onChange: newLink => {
-        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumItems, draft => {
+        const newAlbumItems = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumItems, draft => {
           draft[index].youtubeSrc = newLink;
         });
         setAttributes({
@@ -371,7 +419,7 @@ const General = ({
       label: "Open in new tab",
       checked: openNewTab,
       onChange: val => {
-        const newTabs = (0,immer__WEBPACK_IMPORTED_MODULE_5__.produce)(albumOptions, draft => {
+        const newTabs = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(albumOptions, draft => {
           draft.openNewTab = val;
         });
         setAttributes({
@@ -418,7 +466,100 @@ const General = ({
     icon: "plus f132",
     variant: "primary",
     onClick: addNewAlbum
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New Album", "music-slider")));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add New Album", "music-slider"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Album Control", "music-slider"),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "arrowBtn",
+    style: {
+      marginTop: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "Choice Backward Forward Icons"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleChangeIcon('first', 'second')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.AiOutlineForward, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleChangeIcon('third', 'four')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPlayForwardSharp, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleChangeIcon('five', 'six')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconFastForward, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleChangeIcon('seven', 'eight')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.Icon284Forward2, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handleChangeIcon('nine', 'ten')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconForward, {
+    width: "24",
+    height: "24"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "arrowBtn",
+    style: {
+      marginTop: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "Choice Your Pause Icons"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePauseChangeIcon('pFirst')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.AiOutlinePause, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePauseChangeIcon('pSecond')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPauseCircle, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePauseChangeIcon('pThird')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPlayPause, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePauseChangeIcon('pFour')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPauseFill, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePauseChangeIcon('pFive')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconMediaPauseOutline, {
+    width: "24",
+    height: "24"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "arrowBtn",
+    style: {
+      marginTop: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, "Choice Your Play Icons"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePlayChangeIcon('sFirst')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.AiFillPlayCircle, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePlayChangeIcon('sSecond')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPauseOctagon, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePlayChangeIcon('sThird')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPlaySquare, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePlayChangeIcon('sFour')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconPlay, {
+    width: "24",
+    height: "24"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => handlePlayChangeIcon('sFive')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_5__.IconMusic_play_button, {
+    width: "24",
+    height: "24"
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -697,6 +838,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AiOutlineBackward: () => (/* binding */ AiOutlineBackward),
 /* harmony export */   AiOutlineForward: () => (/* binding */ AiOutlineForward),
 /* harmony export */   AiOutlinePause: () => (/* binding */ AiOutlinePause),
+/* harmony export */   Icon283Backward: () => (/* binding */ Icon283Backward),
+/* harmony export */   Icon284Forward2: () => (/* binding */ Icon284Forward2),
+/* harmony export */   IconBackward: () => (/* binding */ IconBackward),
+/* harmony export */   IconBackwarded: () => (/* binding */ IconBackwarded),
+/* harmony export */   IconFastBackward: () => (/* binding */ IconFastBackward),
+/* harmony export */   IconFastForward: () => (/* binding */ IconFastForward),
+/* harmony export */   IconForward: () => (/* binding */ IconForward),
+/* harmony export */   IconMediaPauseOutline: () => (/* binding */ IconMediaPauseOutline),
+/* harmony export */   IconMusic_play_button: () => (/* binding */ IconMusic_play_button),
+/* harmony export */   IconPauseCircle: () => (/* binding */ IconPauseCircle),
+/* harmony export */   IconPauseFill: () => (/* binding */ IconPauseFill),
+/* harmony export */   IconPauseOctagon: () => (/* binding */ IconPauseOctagon),
+/* harmony export */   IconPlay: () => (/* binding */ IconPlay),
+/* harmony export */   IconPlayCircle: () => (/* binding */ IconPlayCircle),
+/* harmony export */   IconPlayForwardSharp: () => (/* binding */ IconPlayForwardSharp),
+/* harmony export */   IconPlayPause: () => (/* binding */ IconPlayPause),
+/* harmony export */   IconPlaySquare: () => (/* binding */ IconPlaySquare),
 /* harmony export */   blockIcon: () => (/* binding */ blockIcon),
 /* harmony export */   horizontalLineIcon: () => (/* binding */ horizontalLineIcon),
 /* harmony export */   verticalLineIcon: () => (/* binding */ verticalLineIcon)
@@ -745,9 +903,11 @@ const horizontalLineIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M357,204H0v-51h357V204z"
 }));
+
+// All forward icon here
 function AiOutlineForward(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    stroke: "currentColor",
+    stroke: "#ddd",
     fill: "#ddd",
     strokeWidth: 0,
     viewBox: "0 0 1024 1024",
@@ -758,9 +918,60 @@ function AiOutlineForward(props) {
     d: "M825.8 498L538.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L825.8 526c8.3-7.2 8.3-20.8 0-28zm-320 0L218.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L505.8 526c4.1-3.6 6.2-8.8 6.2-14 0-5.2-2.1-10.4-6.2-14z"
   }));
 }
+function IconPlayForwardSharp(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 512 512",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M16 400l240-144L16 112v288zM256 400l240-144-240-144v288z"
+  }));
+}
+function IconFastForward(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 1024 1024",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M793.8 499.3L506.4 273.5c-10.7-8.4-26.4-.8-26.4 12.7v451.6c0 13.5 15.7 21.1 26.4 12.7l287.4-225.8a16.14 16.14 0 000-25.4zm-320 0L186.4 273.5c-10.7-8.4-26.4-.8-26.4 12.7v451.5c0 13.5 15.7 21.1 26.4 12.7l287.4-225.8c4.1-3.2 6.2-8 6.2-12.7 0-4.6-2.1-9.4-6.2-12.6zM857.6 248h-51.2c-3.5 0-6.4 2.7-6.4 6v516c0 3.3 2.9 6 6.4 6h51.2c3.5 0 6.4-2.7 6.4-6V254c0-3.3-2.9-6-6.4-6z"
+  }));
+}
+function Icon284Forward2(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 16 16",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fill: "#ddd",
+    d: "M8 0a8 8 0 100 16A8 8 0 008 0zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zm-3-9L8.5 8 5 10.5zm4 0L12.5 8 9 10.5z"
+  }));
+}
+function IconForward(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 21 21",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fill: "none",
+    stroke: "#ddd",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M12.5 7.5c-5.185-.47-8.52 1.53-10 6 2.825-3.14 6.341-3.718 10-2v3l5-5-5-5z"
+  }));
+}
+
+// All Backward icon here
 function AiOutlineBackward(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    stroke: "currentColor",
+    stroke: "#ddd",
     fill: "#ddd",
     strokeWidth: 0,
     viewBox: "0 0 1024 1024",
@@ -771,9 +982,60 @@ function AiOutlineBackward(props) {
     d: "M485.6 249.9L198.2 498c-8.3 7.1-8.3 20.8 0 27.9l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9zm320 0L518.2 498a18.6 18.6 0 0 0-6.2 14c0 5.2 2.1 10.4 6.2 14l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9z"
   }));
 }
+function IconBackward(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 20 20",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M19 5v10l-9-5 9-5zm-9 0v10l-9-5 9-5z"
+  }));
+}
+function IconFastBackward(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 1024 1024",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M517.6 273.5L230.2 499.3a16.14 16.14 0 000 25.4l287.4 225.8c10.7 8.4 26.4.8 26.4-12.7V286.2c0-13.5-15.7-21.1-26.4-12.7zm320 0L550.2 499.3a16.14 16.14 0 000 25.4l287.4 225.8c10.7 8.4 26.4.8 26.4-12.7V286.2c0-13.5-15.7-21.1-26.4-12.7zm-620-25.5h-51.2c-3.5 0-6.4 2.7-6.4 6v516c0 3.3 2.9 6 6.4 6h51.2c3.5 0 6.4-2.7 6.4-6V254c0-3.3-2.9-6-6.4-6z"
+  }));
+}
+function Icon283Backward(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 16 16",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fill: "#ddd",
+    d: "M8 16A8 8 0 108 0a8 8 0 000 16zM8 1.5a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm3 9L7.5 8 11 5.5zm-4 0L3.5 8 7 5.5z"
+  }));
+}
+function IconBackwarded(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 21 21",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fill: "none",
+    stroke: "#ddd",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M8.5 7.5c5.185-.47 8.52 1.53 10 6-2.825-3.14-6.341-3.718-10-2v3l-5-5 5-5z"
+  }));
+}
+
+// All Pause icon here
 function AiOutlinePause(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    stroke: "currentColor",
+    stroke: "#ddd",
     fill: "#ddd",
     strokeWidth: 0,
     viewBox: "0 0 1024 1024",
@@ -784,9 +1046,72 @@ function AiOutlinePause(props) {
     d: "M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z"
   }));
 }
+function IconPauseCircle(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 1024 1024",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z"
+  }));
+}
+function IconPlayPause(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    fill: "none",
+    viewBox: "0 0 24 24",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fill: "#ddd",
+    d: "M11 7H8v10h3V7zM13 17h3V7h-3v10z"
+  }));
+}
+function IconPauseFill(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    fill: "#ddd",
+    viewBox: "0 0 16 16",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M5.5 3.5A1.5 1.5 0 017 5v6a1.5 1.5 0 01-3 0V5a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0112 5v6a1.5 1.5 0 01-3 0V5a1.5 1.5 0 011.5-1.5z"
+  }));
+}
+function IconMediaPauseOutline(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    baseProfile: "tiny",
+    viewBox: "0 0 24 24",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M8 20c-1.654 0-3-1.346-3-3V8c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 1.654-1.346 3-3 3zM8 7c-.552 0-1 .449-1 1v9a1.001 1.001 0 002 0V8c0-.551-.448-1-1-1zm7 13c-1.654 0-3-1.346-3-3V8c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 1.654-1.346 3-3 3zm0-13c-.552 0-1 .449-1 1v9a1.001 1.001 0 002 0V8c0-.551-.448-1-1-1z"
+  }));
+}
+function IconPauseOctagon(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    fill: "#ddd",
+    stroke: "#ddd",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    viewBox: "0 0 24 24",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M10 15V9M14 15V9M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714L7.714 2z"
+  }));
+}
+
+// All play icon here 
 function AiFillPlayCircle(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    stroke: "currentColor",
+    stroke: "#ddd",
     fill: "#ddd",
     strokeWidth: 0,
     viewBox: "0 0 1024 1024",
@@ -796,6 +1121,58 @@ function AiFillPlayCircle(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z"
   }));
+}
+function IconPlayCircle(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 1024 1024",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 01-12.7-6.5V353.7a8 8 0 0112.7-6.5L656.1 506a7.9 7.9 0 010 12.9z"
+  }));
+}
+function IconPlaySquare(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 1024 1024",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM641.7 520.8L442.3 677.6c-7.4 5.8-18.3.6-18.3-8.8V355.3c0-9.4 10.9-14.7 18.3-8.8l199.4 156.7a11.2 11.2 0 010 17.6z"
+  }));
+}
+function IconPlay(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 384 512",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80v352c0 17.4 9.4 33.4 24.5 41.9S58.2 482 73 473l288-176c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+  }));
+}
+function IconMusic_play_button(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 64 64",
+    fill: "#ddd",
+    height: "2em",
+    width: "2em",
+    ...props
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    fill: "none",
+    stroke: "#ddd",
+    strokeMiterlimit: 10,
+    strokeWidth: 2
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    strokeLinejoin: "bevel",
+    d: "M27 21l14 11-14 11z"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M53.92 10.081c12.107 12.105 12.107 31.732 0 43.838-12.106 12.108-31.734 12.108-43.839 0-12.107-12.105-12.107-31.732 0-43.838 12.105-12.108 31.732-12.108 43.839 0z"
+  })));
 }
 
 /***/ }),
@@ -13317,7 +13694,7 @@ SwiperSlide.displayName = 'SwiperSlide';
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maps/music-slider","version":"1.0.0","title":"Music Slider","category":"widgets","description":"Add a dynamic music player to your WordPress site with the Music Player Slider Block for Gutenberg.","keywords":["key1","key2","key3","key4","key5"],"textdomain":"music-slider","attributes":{"align":{"type":"string","default":""},"albumItems":{"type":"array","default":[{"title":"Symphony","name":"Clean Bandit ft. Zara Larson","trackSrc":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3","coverSrc":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397","youtubeSrc":"https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"}]},"albumOptions":{"type":"object","default":{"openNewTab":true}},"columns":{"type":"object","default":{"desktop":3,"tablet":2,"mobile":1}},"columnGap":{"type":"string","default":"30px"},"rowGap":{"type":"string","default":"40px"},"layout":{"type":"string","default":"vertical"},"alignment":{"type":"string","default":"center"},"textAlign":{"type":"string","default":"center"},"width":{"type":"string","default":"80%"},"background":{"type":"object","default":{"color":"#0000"}},"content":{"type":"string","default":"Content of the block","selector":".prefixBlockName .content"},"typography":{"type":"object","default":{"fontSize":25}},"color":{"type":"string","default":"#333"},"colors":{"type":"object","default":{"color":"#333","bg":"#fff"}},"img":{"type":"object","default":{"id":null,"url":"","alt":"","title":""}},"isIcon":{"type":"boolean","default":true},"icon":{"type":"object","default":{"class":"fa-brands fa-wordpress"}},"separator":{"type":"object","default":{"width":"20%","height":"2px","style":"solid","color":"#bbb"}},"padding":{"type":"object","default":{"top":"15px","right":"30px","bottom":"15px","left":"30px"}},"margin":{"type":"object","default":{"top":"0px","right":"0px","bottom":"15px","left":"0px"}},"border":{"type":"object","default":{"radius":"5px"}},"shadow":{"type":"array","default":[]}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maps/music-slider","version":"1.0.0","title":"Music Slider","category":"widgets","description":"Add a dynamic music player to your WordPress site with the Music Player Slider Block for Gutenberg.","keywords":["key1","key2","key3","key4","key5"],"textdomain":"music-slider","attributes":{"align":{"type":"string","default":""},"albumItems":{"type":"array","default":[{"title":"Symphony","name":"Clean Bandit ft. Zara Larson","trackSrc":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3","coverSrc":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397","youtubeSrc":"https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"}]},"albumControl":{"type":"object","default":{"forward":"second","backward":"first","pause":"pFirst","play":"sFirst"}},"albumOptions":{"type":"object","default":{"openNewTab":true}},"columns":{"type":"object","default":{"desktop":3,"tablet":2,"mobile":1}},"columnGap":{"type":"string","default":"30px"},"rowGap":{"type":"string","default":"40px"},"layout":{"type":"string","default":"vertical"},"alignment":{"type":"string","default":"center"},"textAlign":{"type":"string","default":"center"},"width":{"type":"string","default":"80%"},"background":{"type":"object","default":{"color":"#0000"}},"content":{"type":"string","default":"Content of the block","selector":".prefixBlockName .content"},"typography":{"type":"object","default":{"fontSize":25}},"color":{"type":"string","default":"#333"},"colors":{"type":"object","default":{"color":"#333","bg":"#fff"}},"img":{"type":"object","default":{"id":null,"url":"","alt":"","title":""}},"isIcon":{"type":"boolean","default":true},"icon":{"type":"object","default":{"class":"fa-brands fa-wordpress"}},"separator":{"type":"object","default":{"width":"20%","height":"2px","style":"solid","color":"#bbb"}},"padding":{"type":"object","default":{"top":"15px","right":"30px","bottom":"15px","left":"30px"}},"margin":{"type":"object","default":{"top":"0px","right":"0px","bottom":"15px","left":"0px"}},"border":{"type":"object","default":{"radius":"5px"}},"shadow":{"type":"array","default":[]}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 

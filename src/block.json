@@ -24,6 +24,16 @@
       }]
     },
 
+    "albumControl":{
+     "type": "object",
+     "default": {
+      "forward": "second",
+      "backward": "first",
+      "pause": "pFirst",
+      "play": "sFirst"
+     }
+    },
+
     "albumOptions":{
       "type": "object",
       "default": {

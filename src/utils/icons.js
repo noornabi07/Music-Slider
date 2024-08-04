@@ -15,22 +15,268 @@ export const horizontalLineIcon = <svg xmlns='http://www.w3.org/2000/svg' width=
 </svg>;
 
 
+// All forward icon here
 export function AiOutlineForward(props) {
-	return <svg stroke="currentColor" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M825.8 498L538.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L825.8 526c8.3-7.2 8.3-20.8 0-28zm-320 0L218.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L505.8 526c4.1-3.6 6.2-8.8 6.2-14 0-5.2-2.1-10.4-6.2-14z" /></svg>;
+	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M825.8 498L538.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L825.8 526c8.3-7.2 8.3-20.8 0-28zm-320 0L218.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L505.8 526c4.1-3.6 6.2-8.8 6.2-14 0-5.2-2.1-10.4-6.2-14z" /></svg>;
+}
+export function IconPlayForwardSharp(props) {
+	return (
+		<svg
+			viewBox="0 0 512 512"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M16 400l240-144L16 112v288zM256 400l240-144-240-144v288z" />
+		</svg>
+	);
+}
+export function IconFastForward(props) {
+	return (
+		<svg
+			viewBox="0 0 1024 1024"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M793.8 499.3L506.4 273.5c-10.7-8.4-26.4-.8-26.4 12.7v451.6c0 13.5 15.7 21.1 26.4 12.7l287.4-225.8a16.14 16.14 0 000-25.4zm-320 0L186.4 273.5c-10.7-8.4-26.4-.8-26.4 12.7v451.5c0 13.5 15.7 21.1 26.4 12.7l287.4-225.8c4.1-3.2 6.2-8 6.2-12.7 0-4.6-2.1-9.4-6.2-12.6zM857.6 248h-51.2c-3.5 0-6.4 2.7-6.4 6v516c0 3.3 2.9 6 6.4 6h51.2c3.5 0 6.4-2.7 6.4-6V254c0-3.3-2.9-6-6.4-6z" />
+		</svg>
+	);
+}
+export function Icon284Forward2(props) {
+	return (
+		<svg
+			viewBox="0 0 16 16"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path
+				fill="#ddd"
+				d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zm-3-9L8.5 8 5 10.5zm4 0L12.5 8 9 10.5z"
+			/>
+		</svg>
+	);
+}
+export function IconForward(props) {
+	return (
+		<svg
+			viewBox="0 0 21 21"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path
+				fill="none"
+				stroke="#ddd"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="M12.5 7.5c-5.185-.47-8.52 1.53-10 6 2.825-3.14 6.341-3.718 10-2v3l5-5-5-5z"
+			/>
+		</svg>
+	);
 }
 
-
+// All Backward icon here
 export function AiOutlineBackward(props) {
-	return <svg stroke="currentColor" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M485.6 249.9L198.2 498c-8.3 7.1-8.3 20.8 0 27.9l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9zm320 0L518.2 498a18.6 18.6 0 0 0-6.2 14c0 5.2 2.1 10.4 6.2 14l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9z" /></svg>;
+	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M485.6 249.9L198.2 498c-8.3 7.1-8.3 20.8 0 27.9l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9zm320 0L518.2 498a18.6 18.6 0 0 0-6.2 14c0 5.2 2.1 10.4 6.2 14l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9z" /></svg>;
+}
+export function IconBackward(props) {
+	return (
+		<svg
+			viewBox="0 0 20 20"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M19 5v10l-9-5 9-5zm-9 0v10l-9-5 9-5z" />
+		</svg>
+	);
+}
+export function IconFastBackward(props) {
+	return (
+		<svg
+			viewBox="0 0 1024 1024"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M517.6 273.5L230.2 499.3a16.14 16.14 0 000 25.4l287.4 225.8c10.7 8.4 26.4.8 26.4-12.7V286.2c0-13.5-15.7-21.1-26.4-12.7zm320 0L550.2 499.3a16.14 16.14 0 000 25.4l287.4 225.8c10.7 8.4 26.4.8 26.4-12.7V286.2c0-13.5-15.7-21.1-26.4-12.7zm-620-25.5h-51.2c-3.5 0-6.4 2.7-6.4 6v516c0 3.3 2.9 6 6.4 6h51.2c3.5 0 6.4-2.7 6.4-6V254c0-3.3-2.9-6-6.4-6z" />
+		</svg>
+	);
+}
+export function Icon283Backward(props) {
+	return (
+		<svg
+			viewBox="0 0 16 16"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path
+				fill="#ddd"
+				d="M8 16A8 8 0 108 0a8 8 0 000 16zM8 1.5a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm3 9L7.5 8 11 5.5zm-4 0L3.5 8 7 5.5z"
+			/>
+		</svg>
+	);
+}
+export function IconBackwarded(props) {
+	return (
+		<svg
+			viewBox="0 0 21 21"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path
+				fill="none"
+				stroke="#ddd"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				d="M8.5 7.5c5.185-.47 8.52 1.53 10 6-2.825-3.14-6.341-3.718-10-2v3l-5-5 5-5z"
+			/>
+		</svg>
+	);
 }
 
-
+// All Pause icon here
 export function AiOutlinePause(props) {
-	return <svg stroke="currentColor" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z" /></svg>;
+	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z" /></svg>;
+}
+export function IconPauseCircle(props) {
+	return (
+		<svg
+			viewBox="0 0 1024 1024"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm-88-532h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8zm224 0h-48c-4.4 0-8 3.6-8 8v304c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V360c0-4.4-3.6-8-8-8z" />
+		</svg>
+	);
+}
+export function IconPlayPause(props) {
+	return (
+		<svg fill="none" viewBox="0 0 24 24" height="2em" width="2em" {...props}>
+			<path fill="#ddd" d="M11 7H8v10h3V7zM13 17h3V7h-3v10z" />
+		</svg>
+	);
+}
+export function IconPauseFill(props) {
+	return (
+		<svg
+			fill="#ddd"
+			viewBox="0 0 16 16"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M5.5 3.5A1.5 1.5 0 017 5v6a1.5 1.5 0 01-3 0V5a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0112 5v6a1.5 1.5 0 01-3 0V5a1.5 1.5 0 011.5-1.5z" />
+		</svg>
+	);
+}
+export function IconMediaPauseOutline(props) {
+	return (
+		<svg
+			baseProfile="tiny"
+			viewBox="0 0 24 24"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M8 20c-1.654 0-3-1.346-3-3V8c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 1.654-1.346 3-3 3zM8 7c-.552 0-1 .449-1 1v9a1.001 1.001 0 002 0V8c0-.551-.448-1-1-1zm7 13c-1.654 0-3-1.346-3-3V8c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 1.654-1.346 3-3 3zm0-13c-.552 0-1 .449-1 1v9a1.001 1.001 0 002 0V8c0-.551-.448-1-1-1z" />
+		</svg>
+	);
+}
+export function IconPauseOctagon(props) {
+	return (
+		<svg
+			fill="#ddd"
+			stroke="#ddd"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			strokeWidth={2}
+			viewBox="0 0 24 24"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M10 15V9M14 15V9M7.714 2h8.572L22 7.714v8.572L16.286 22H7.714L2 16.286V7.714L7.714 2z" />
+		</svg>
+	);
 }
 
-
-
+// All play icon here 
 export function AiFillPlayCircle(props) {
-	return <svg stroke="currentColor" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z" /></svg>;
+	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z" /></svg>;
+}
+export function IconPlayCircle(props) {
+	return (
+		<svg
+			viewBox="0 0 1024 1024"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 01-12.7-6.5V353.7a8 8 0 0112.7-6.5L656.1 506a7.9 7.9 0 010 12.9z" />
+		</svg>
+	);
+}
+export function IconPlaySquare(props) {
+	return (
+		<svg
+			viewBox="0 0 1024 1024"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM641.7 520.8L442.3 677.6c-7.4 5.8-18.3.6-18.3-8.8V355.3c0-9.4 10.9-14.7 18.3-8.8l199.4 156.7a11.2 11.2 0 010 17.6z" />
+		</svg>
+	);
+}
+export function IconPlay(props) {
+	return (
+		<svg
+			viewBox="0 0 384 512"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80v352c0 17.4 9.4 33.4 24.5 41.9S58.2 482 73 473l288-176c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
+		</svg>
+	);
+}
+export function IconMusic_play_button(props) {
+	return (
+		<svg
+			viewBox="0 0 64 64"
+			fill="#ddd"
+			height="2em"
+			width="2em"
+			{...props}
+		>
+			<g
+				fill="none"
+				stroke="#ddd"
+				strokeMiterlimit={10}
+				strokeWidth={2}
+			>
+				<path strokeLinejoin="bevel" d="M27 21l14 11-14 11z" />
+				<path d="M53.92 10.081c12.107 12.105 12.107 31.732 0 43.838-12.106 12.108-31.734 12.108-43.839 0-12.107-12.105-12.107-31.732 0-43.838 12.105-12.108 31.732-12.108 43.839 0z" />
+			</g>
+		</svg>
+	);
 }
