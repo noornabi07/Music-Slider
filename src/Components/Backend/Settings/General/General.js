@@ -1,315 +1,299 @@
-import React, { useState } from 'react';
-import { PanelBody, Button, TextControl, ToggleControl } from '@wordpress/components';
-import { MediaUpload } from "@wordpress/block-editor";
+import { Button, PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { produce } from 'immer';
+import React, { useState } from 'react';
+import { AiFillPlayCircle, AiOutlineForward, AiOutlinePause, Icon284Forward2, IconFastForward, IconForward, IconMediaPauseOutline, IconMusic_play_button, IconPauseCircle, IconPauseFill, IconPauseOctagon, IconPlay, IconPlayForwardSharp, IconPlayPause, IconPlaySquare } from '../../../../utils/icons';
 import { newItems } from '../../../../utils/options';
-import { AiOutlineForward, IconPlayForwardSharp, IconFastForward, Icon284Forward2, IconForward, AiOutlinePause, IconPauseCircle, IconPlayPause, IconPauseFill, IconMediaPauseOutline, AiFillPlayCircle, IconPlayCircle, IconPlaySquare, IconPlay, IconMusic_play_button, IconPauseOctagon } from '../../../../utils/icons';
+
+import { InlineMediaUpload } from '../../../../../../Components';
+
+
 
 const General = ({ attributes, setAttributes, activeAlbum, setActiveAlbum }) => {
-  const [selectedForwardIcon, setSelectedForwardIcon] = useState(null);
-  const { albumItems, albumOptions, albumControl } = attributes;
-  const { openNewTab } = albumOptions;
+	const { albumItems, albumOptions, albumControl } = attributes;
+	const { openNewTab } = albumOptions;
+	const [selectedBfButton, setSelectedBfButton] = useState('bf1');
+	const [pauseButton, setPauseButton] = useState('pb1')
+	const [playButton, setPlayButton] = useState('sb1');
 
 
-  // handle Image url change function 
-  const handleImageUrlChange = (newUrl, index) => {
-    const newAlbumItems = produce(albumItems, draft => {
-      draft[index].coverSrc = newUrl;
-    });
-    setAttributes({ albumItems: newAlbumItems });
-  };
+	// handle Image url change function 
+	const handleImageUrlChange = (newUrl, index) => {
+		const newAlbumItems = produce(albumItems, draft => {
+			draft[index].coverSrc = newUrl;
+		});
+		setAttributes({ albumItems: newAlbumItems });
+	};
 
-  const removeAlbum = (idx) => {
-    const newItemByRemove = produce(albumItems, draft => {
-      draft.splice(idx, 1);
-    });
-    setAttributes({ albumItems: newItemByRemove });
-  }
+	const removeAlbum = (idx) => {
+		const newItemByRemove = produce(albumItems, draft => {
+			draft.splice(idx, 1);
+		});
+		setAttributes({ albumItems: newItemByRemove });
+	}
 
-  const addNewAlbum = () => {
-    const newAlbumItem = produce(albumItems, draft => {
-      draft.push(newItems);
-    })
-    setAttributes({ albumItems: newAlbumItem });
-    setActiveAlbum(albumItems.length);
-  }
+	const addNewAlbum = () => {
+		const newAlbumItem = produce(albumItems, draft => {
+			draft.push(newItems);
+		})
+		setAttributes({ albumItems: newAlbumItem });
+		setActiveAlbum(albumItems.length);
+	}
 
-  // Duplicate Function
-  const duplicateAlbum = (slide, index) => {
-    const newArray = produce(albumItems, draft => {
-      draft.splice(index, 0, slide);
-    })
-    setAttributes({ albumItems: newArray })
-  }
+	// Duplicate Function
+	const duplicateAlbum = (slide, index) => {
+		const newArray = produce(albumItems, draft => {
+			draft.splice(index, 0, slide);
+		})
+		setAttributes({ albumItems: newArray })
+	}
 
-  // handle Icon change function
-  const handleChangeIcon = (prevValue, nextValue) => {
-    const newAlbumControl = produce(albumControl, draft => {
-      draft.backward = prevValue;
-      draft.forward = nextValue;
-    })
-    setAttributes({ albumControl: newAlbumControl });
-  };
+	// handle Icon change function
+	const handleChangeIcon = (prevValue, nextValue, iconName) => {
+		const newAlbumControl = produce(albumControl, draft => {
+			draft.backward = prevValue;
+			draft.forward = nextValue;
+		})
+		setAttributes({ albumControl: newAlbumControl });
+		setSelectedBfButton(iconName);
+	};
 
-  const handlePauseChangeIcon = (name) => {
-    const newIcon = produce(albumControl, draft => {
-      draft.pause = name;
-    })
-    setAttributes({albumControl: newIcon})
-  } 
+	const handlePauseChangeIcon = (name, iconName) => {
+		const newIcon = produce(albumControl, draft => {
+			draft.pause = name;
+		})
+		setAttributes({ albumControl: newIcon })
+		setPauseButton(iconName);
+	}
 
-  const handlePlayChangeIcon = (name) => {
-    const newIcon = produce(albumControl, draft => { 
-      draft.play = name;
-    })
-    setAttributes({albumControl: newIcon})
-  }
+	const handlePlayChangeIcon = (name, iconName) => {
+		const newIcon = produce(albumControl, draft => {
+			draft.play = name;
+		})
+		setAttributes({ albumControl: newIcon })
+		setPlayButton(iconName);
+	}
 
+	const getButtonStyle = (stateName, iconName) => {
+		return stateName === iconName
+			? {
+				backgroundColor: '#180161',
+				color: 'white',           
+				border: 'none',
+				outline: 'none',
+				borderRadius: '4px',      
+				padding: '4px 7px',       
+				transform: 'scale(1.1)',    
+				transition: 'all 0.2s ease',
+			}
+			: {
+				backgroundColor: '#f1f1f1', 
+				color: 'black',             
+				border: '1px solid #ccc',   
+			};
+	};
 
+	return <>
+		{/* Album Panel Setting */}
+		<PanelBody className='bPlPanelBody addRemoveItems editItem' title={__('Albums', 'music-slider')} initialOpen={false}>
+			{
+				albumItems.map((item, index) => {
+					return <PanelBody className='bPlPanelBody' onToggle={() => setActiveAlbum(index)} key={index} title={__(`Album ${index + 1}`, "music-slider")} initialOpen={false}>
+						<div onClick={() => setActiveAlbum(index)}>
+							<InlineMediaUpload label={__("Album Image URL", "n-slider")} value={item.coverSrc} onChange={val => handleImageUrlChange(val, index)} />
 
+							<TextControl
+								className="mt20"
+								label={__("Track Source Url", "music-slider")}
+								value={albumItems[index].trackSrc}
+								onChange={(newTrack) => {
+									const newSlideItems = produce(albumItems, draft => {
+										draft[index].trackSrc = newTrack;
+									});
+									setAttributes({ albumItems: newSlideItems });
+								}}
+								placeholder={__("Submit your track link", "music-slider")}
+							></TextControl>
 
-  return <>
-    {/* Album Panel Setting */}
-    <PanelBody className='bPlPanelBody addRemoveItems editItem' title={__('Albums', 'music-slider')} initialOpen={false}>
-      {
-        albumItems.map((item, index) => {
-          return <PanelBody onToggle={() => setActiveAlbum(index)} key={index} title={__(`Album ${index + 1}`, "music-slider")} initialOpen={false}>
-            <div onClick={() => setActiveAlbum(index)}>
-              {/* Album cover image url */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "-18px",
-                }}
-              >
-                {/* image url control */}
-                <TextControl
-                  label={__("Album Image URL", "n-slider")}
-                  value={item.coverSrc}
-                  onChange={(val) => handleImageUrlChange(val, index)}
-                ></TextControl>
-                {/* image upload button */}
-                <MediaUpload
-                  onSelect={(newMedia) => handleImageUrlChange(newMedia.url, index)}
-                  render={({ open }) => (
-                    <Button
-                      onClick={open}
-                      style={{
-                        background: "#4527a4",
-                        color: "white",
-                        height: "32px",
-                        marginTop: "16px",
-                      }}
-                      icon={"upload f317"}
-                    ></Button>
-                  )}
-                ></MediaUpload>
-              </div>
+							{/* Title TextControl */}
+								<TextControl
+									label={__("Track Title", "music-slider")}
+									value={albumItems[index].title}
+									onChange={(newTitle) => {
+										const newAlbumItems = produce(albumItems, draft => {
+											draft[index].title = newTitle;
+										});
+										setAttributes({ albumItems: newAlbumItems });
+									}}
+									placeholder={__("Type here title", "music-slider")}
+								></TextControl>
 
-              {/* Track source url */}
-              <div className='textControl'>
-                <TextControl
-                  label={__("Track Source Url", "music-slider")}
-                  value={albumItems[index].trackSrc}
-                  onChange={(newTrack) => {
-                    const newSlideItems = produce(albumItems, draft => {
-                      draft[index].trackSrc = newTrack;
-                    });
-                    setAttributes({ albumItems: newSlideItems });
-                  }}
-                  placeholder={__("Submit your track link", "music-slider")}
-                ></TextControl>
-              </div>
-
-              {/* Title TextControl */}
-              <div>
-                <TextControl
-                  label={__("Track Title", "music-slider")}
-                  value={albumItems[index].title}
-                  onChange={(newTitle) => {
-                    const newAlbumItems = produce(albumItems, draft => {
-                      draft[index].title = newTitle;
-                    });
-                    setAttributes({ albumItems: newAlbumItems });
-                  }}
-                  placeholder={__("Type here title", "music-slider")}
-                ></TextControl>
-              </div>
-
-              {/* Name TextControl */}
-              <div>
-                <TextControl
-                  label={__("Track Name", "music-slider")}
-                  value={albumItems[index].name}
-                  onChange={(newName) => {
-                    const newAlbumItems = produce(albumItems, draft => {
-                      draft[index].name = newName;
-                    });
-                    setAttributes({ albumItems: newAlbumItems });
-                  }}
-                  placeholder={__("Type here track name", "music-slider")}
-                ></TextControl>
-              </div>
+							{/* Name TextControl */}
+								<TextControl
+									label={__("Track Name", "music-slider")}
+									value={albumItems[index].name}
+									onChange={(newName) => {
+										const newAlbumItems = produce(albumItems, draft => {
+											draft[index].name = newName;
+										});
+										setAttributes({ albumItems: newAlbumItems });
+									}}
+									placeholder={__("Type here track name", "music-slider")}
+								></TextControl>
 
 
-              {/* YouTube link */}
-              <div>
-                <TextControl
-                  label={__("YouTube Source", "music-slider")}
-                  value={albumItems[index].youtubeSrc}
-                  onChange={(newLink) => {
-                    const newAlbumItems = produce(albumItems, draft => {
-                      draft[index].youtubeSrc = newLink;
-                    });
-                    setAttributes({ albumItems: newAlbumItems });
-                  }}
-                  placeholder={__("Submit youtube link", "music-slider")}
-                ></TextControl>
-              </div>
+							{/* YouTube link */}
+								<TextControl
+									label={__("YouTube Source", "music-slider")}
+									value={albumItems[index].youtubeSrc}
+									onChange={(newLink) => {
+										const newAlbumItems = produce(albumItems, draft => {
+											draft[index].youtubeSrc = newLink;
+										});
+										setAttributes({ albumItems: newAlbumItems });
+									}}
+									placeholder={__("Submit youtube link", "music-slider")}
+								></TextControl>
 
-              {/* Open New tab youtube */}
-              {/* tab toggle control */}
-              <div>
-                <ToggleControl
-                  label="Open in new tab"
-                  checked={openNewTab}
-                  onChange={(val) => {
-                    const newTabs = produce(albumOptions, draft => {
-                      draft.openNewTab = val
-                    })
-                    setAttributes({ albumOptions: newTabs })
-                  }}
-                />
-              </div>
+							{/* Open New tab youtube */}
+							{/* tab toggle control */}
+								<ToggleControl
+									label="Open in new tab"
+									checked={openNewTab}
+									onChange={(val) => {
+										const newTabs = produce(albumOptions, draft => {
+											draft.openNewTab = val
+										})
+										setAttributes({ albumOptions: newTabs })
+									}}
+								/>
 
-              {/* Remove and duplicate button */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "5px",
-                  alignItems: "center",
-                }}
-              >
-                {/* remove button */}
-                <Button
-                  style={{
-                    width: "112px",
-                    marginTop: "15px",
-                    background: "red",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                  icon={"trash f182"}
-                  variant="primary"
-                  onClick={() => removeAlbum(index)}>
-                  {__("Remove", "music-slider")}
-                </Button>
-                {/* Duplicate button */}
-                <Button
-                  style={{
-                    width: "112px",
-                    marginTop: "15px",
-                    background: "green",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                  icon={"plus-alt f502"}
-                  variant="primary"
-                  onClick={() => duplicateAlbum(item, index)}
-                >
-                  {__("Duplicate", "music-slider")}
-                </Button>
-              </div>
+							{/* Remove and duplicate button */}
+							<div
+								style={{
+									display: "flex",
+									gap: "5px",
+									alignItems: "center",
+								}}
+							>
+								{/* remove button */}
+								<Button
+									style={{
+										width: "112px",
+										marginTop: "15px",
+										background: "red",
+										display: "flex",
+										justifyContent: "center",
+									}}
+									icon={"trash f182"}
+									variant="primary"
+									onClick={() => removeAlbum(index)}>
+									{__("Remove", "music-slider")}
+								</Button>
+								{/* Duplicate button */}
+								<Button
+									style={{
+										width: "112px",
+										marginTop: "15px",
+										background: "green",
+										display: "flex",
+										justifyContent: "center",
+									}}
+									icon={"plus-alt f502"}
+									variant="primary"
+									onClick={() => duplicateAlbum(item, index)}
+								>
+									{__("Duplicate", "music-slider")}
+								</Button>
+							</div>
 
 
-            </div>
-          </PanelBody>
-        })
-      }
+						</div>
+					</PanelBody>
+				})
+			}
 
-      {/* Add slide button */}
-      <Button
-        style={{
-          width: "217px",
-          background: "#4527a4",
-          display: "flex",
-          justifyContent: "center",
-          margin: "10px auto"
-        }}
-        icon={"plus f132"}
-        variant="primary"
-        onClick={addNewAlbum}
-      >
-        {__("Add New Album", "music-slider")}
-      </Button>
-    </PanelBody>
-
-
-    <PanelBody title={__("Album Control", "music-slider")} initialOpen={false}>
-      {/* Forward Icons */}
-      <div className="arrowBtn" style={{ marginTop: "20px" }}>
-        <h4>Choice Backward Forward Icons</h4>
-        <button onClick={() => handleChangeIcon('first', 'second')}>
-          <AiOutlineForward width="24" height="24" />
-        </button>
-        <button onClick={() => handleChangeIcon('third', 'four')}>
-          <IconPlayForwardSharp width="24" height="24" />
-        </button>
-        <button onClick={() => handleChangeIcon('five', 'six')}>
-          <IconFastForward width="24" height="24" />
-        </button>
-        <button onClick={() => handleChangeIcon('seven', 'eight')}>
-          <Icon284Forward2 width="24" height="24" />
-        </button>
-        <button onClick={() => handleChangeIcon('nine', 'ten')}>
-          <IconForward width="24" height="24" />
-        </button>
-      </div>
+			{/* Add slide button */}
+			<Button
+				style={{
+					width: "217px",
+					background: "#4527a4",
+					display: "flex",
+					justifyContent: "center",
+					margin: "10px auto"
+				}}
+				icon={"plus f132"}
+				variant="primary"
+				onClick={addNewAlbum}
+			>
+				{__("Add New Album", "music-slider")}
+			</Button>
+		</PanelBody>
 
 
-      {/* Pause Icons */}
-      <div className="arrowBtn" style={{ marginTop: "20px" }}>
-        <h4>Choice Your Pause Icons</h4>
-        <button onClick={() => handlePauseChangeIcon('pFirst')}>
-          <AiOutlinePause width="24" height="24" />
-        </button>
-        <button onClick={() => handlePauseChangeIcon('pSecond')}>
-          <IconPauseCircle width="24" height="24" />
-        </button>
-        <button onClick={() => handlePauseChangeIcon('pThird')}>
-          <IconPlayPause width="24" height="24" />
-        </button>
-        <button onClick={() => handlePauseChangeIcon('pFour')}>
-          <IconPauseFill width="24" height="24" />
-        </button>
-        <button onClick={() => handlePauseChangeIcon('pFive')}>
-          <IconMediaPauseOutline width="24" height="24" />
-        </button>
-      </div>
+		<PanelBody title={__("Album Control", "music-slider")} initialOpen={false}>
+			{/* Forward Icons */}
+			<div className="arrowBtn" style={{ marginTop: "20px" }}>
+				<h4>Choice Backward Forward Icons</h4>
+				<button onClick={() => handleChangeIcon('first', 'second', 'bf1')} style={getButtonStyle(selectedBfButton, 'bf1')}>
+					<AiOutlineForward width="24" height="24" />
+				</button>
+				<button onClick={() => handleChangeIcon('third', 'four', 'bf2')} style={getButtonStyle(selectedBfButton,'bf2')}>
+					<IconPlayForwardSharp width="24" height="24" />
+				</button>
+				<button onClick={() => handleChangeIcon('five', 'six', 'bf3')} style={getButtonStyle(selectedBfButton,'bf3')}>
+					<IconFastForward width="24" height="24" />
+				</button>
+				<button onClick={() => handleChangeIcon('seven', 'eight', 'bf4')} style={getButtonStyle(selectedBfButton,'bf4')}>
+					<Icon284Forward2 width="24" height="24" />
+				</button>
+				<button onClick={() => handleChangeIcon('nine', 'ten', 'bf5')} style={getButtonStyle(selectedBfButton,'bf5')}>
+					<IconForward width="24" height="24" />
+				</button>
+			</div>
 
-      {/* Play Icons */}
-      <div className="arrowBtn" style={{ marginTop: "20px" }}>
-        <h4>Choice Your Play Icons</h4>
-        <button onClick={() => handlePlayChangeIcon('sFirst')}>
-          <AiFillPlayCircle width="24" height="24" />
-        </button>
-        <button onClick={() => handlePlayChangeIcon('sSecond')}>
-          <IconPauseOctagon width="24" height="24" />
-        </button>
-        <button onClick={() => handlePlayChangeIcon('sThird')}>
-          <IconPlaySquare width="24" height="24" />
-        </button>
-        <button onClick={() => handlePlayChangeIcon('sFour')}>
-          <IconPlay width="24" height="24" />
-        </button>
-        <button onClick={() => handlePlayChangeIcon('sFive')}>
-          <IconMusic_play_button width="24" height="24" />
-        </button>
-      </div>
-    </PanelBody>
-  </>
+
+			{/* Pause Icons */}
+			<div className="arrowBtn" style={{ marginTop: "20px" }}>
+				<h4>Choice Your Pause Icons</h4>
+				<button onClick={() => handlePauseChangeIcon('pFirst', 'pb1')} style={getButtonStyle(pauseButton, 'pb1')}>
+					<AiOutlinePause width="24" height="24" />
+				</button>
+				<button onClick={() => handlePauseChangeIcon('pSecond', 'pb2')} style={getButtonStyle(pauseButton, 'pb2')}>
+					<IconPauseCircle width="24" height="24" />
+				</button>
+				<button onClick={() => handlePauseChangeIcon('pThird', 'pb3')} style={getButtonStyle(pauseButton, 'pb3')}>
+					<IconPlayPause width="24" height="24" />
+				</button>
+				<button onClick={() => handlePauseChangeIcon('pFour', 'pb4')} style={getButtonStyle(pauseButton, 'pb4')}>
+					<IconPauseFill width="24" height="24" />
+				</button>
+				<button onClick={() => handlePauseChangeIcon('pFive', 'pb5')} style={getButtonStyle(pauseButton, 'pb5')}>
+					<IconMediaPauseOutline width="24" height="24" />
+				</button>
+			</div>
+
+			{/* Play Icons */}
+			<div className="arrowBtn" style={{ marginTop: "20px" }}>
+				<h4>Choice Your Play Icons</h4>
+				<button onClick={() => handlePlayChangeIcon('sFirst', 'sb1')} style={getButtonStyle(playButton, 'sb1')}>
+					<AiFillPlayCircle width="24" height="24" />
+				</button>
+				<button onClick={() => handlePlayChangeIcon('sSecond', 'sb2')} style={getButtonStyle(playButton, 'sb2')}>
+					<IconPauseOctagon width="24" height="24" />
+				</button>
+				<button onClick={() => handlePlayChangeIcon('sThird', 'sb3')} style={getButtonStyle(playButton, 'sb3')}>
+					<IconPlaySquare width="24" height="24" />
+				</button>
+				<button onClick={() => handlePlayChangeIcon('sFour', 'sb4')} style={getButtonStyle(playButton, 'sb4')}>
+					<IconPlay width="24" height="24" />
+				</button>
+				<button onClick={() => handlePlayChangeIcon('sFive', 'sb5')} style={getButtonStyle(playButton, 'sb5')}>
+					<IconMusic_play_button width="24" height="24" />
+				</button>
+			</div>
+		</PanelBody>
+	</>
 };
 
 export default General;

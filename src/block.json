@@ -15,29 +15,48 @@
     },
     "albumItems": {
       "type": "array",
-      "default": [{
-        "title": "Symphony",
-        "name": "Clean Bandit ft. Zara Larson",
-        "trackSrc": "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
-        "coverSrc": "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
-        "youtubeSrc": "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
-      }]
+      "default": [
+        {
+          "title": "Symphony",
+          "name": "Clean Bandit ft. Zara Larson",
+          "trackSrc": "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+          "coverSrc": "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
+          "youtubeSrc": "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
+        }
+      ]
     },
 
-    "albumControl":{
-     "type": "object",
-     "default": {
-      "forward": "second",
-      "backward": "first",
-      "pause": "pFirst",
-      "play": "sFirst"
-     }
+    "albumControl": {
+      "type": "object",
+      "default": {
+        "forward": "second",
+        "backward": "first",
+        "pause": "pFirst",
+        "play": "sFirst"
+      }
     },
 
-    "albumOptions":{
+    "albumOptions": {
       "type": "object",
       "default": {
         "openNewTab": true
+      }
+    },
+
+    "albumStyles": {
+      "type": "object",
+      "default": {
+        "background": {},
+        "border": { "radius": "5px" }
+      }
+    },
+
+    "coverStyles": {
+      "type": "object",
+      "default": {
+        "width": { "desktop": "100%", "tablet": "", "mobile": "" },
+        "height": { "desktop": "100%", "tablet": "", "mobile": "" },
+        "coverBorder": { "radius": "0px" }
       }
     },
 
@@ -167,7 +186,7 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
+  "style": "file:./view.css",
   "render": "file:./render.php",
   "viewScript": "file:./view.js"
 }

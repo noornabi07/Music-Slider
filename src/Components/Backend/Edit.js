@@ -2,11 +2,10 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { useEffect, useRef, useState } from 'react';
 import { tabController } from '../../../../Components/utils/functions';
 import React from 'react';
-import { songs } from '../../utils/options';
 import Style from '../Common/Style';
 import '../../editor.scss';
 import Settings from './Settings/Settings';
-import { AiFillPlayCircle, AiOutlineBackward, AiOutlineForward, AiOutlinePause, Icon283Backward, Icon284Forward2, IconBackward, IconBackwarded, IconFastBackward, IconFastForward, IconForward, IconMediaPauseOutline, IconMusic_play_button, IconPauseCircle, IconPauseFill, IconPauseOctagon, IconPlay, IconPlayCircle, IconPlayForwardSharp, IconPlayPause, IconPlaySquare } from '../../utils/icons';
+import { AiFillPlayCircle, AiOutlineBackward, AiOutlineForward, AiOutlinePause, Icon283Backward, Icon284Forward2, IconBackward, IconBackwarded, IconFastBackward, IconFastForward, IconForward, IconMediaPauseOutline, IconMusic_play_button, IconPauseCircle, IconPauseFill, IconPauseOctagon, IconPlay, IconPlayForwardSharp, IconPlayPause, IconPlaySquare } from '../../utils/icons';
 import SwiperSlider from './SwiperSlider';
 
 const Edit = (props) => {
@@ -36,14 +35,21 @@ const Edit = (props) => {
 		let newIndex = currentSongIdx;
 
 		if (direction === 'forward') {
-			newIndex = (currentSongIdx + 1) % songs.length;
+			newIndex = (currentSongIdx + 1) % albumItems.length;
 		} else if (direction === 'backward') {
-			newIndex = (currentSongIdx - 1 + songs.length) % songs.length;
+			newIndex = (currentSongIdx - 1 + albumItems.length) % albumItems.length;
 		}
+
 		setCurrentSongIdx(newIndex);
-		audio.src = songs[newIndex].source;
+		audio.src = albumItems[newIndex].trackSrc;
+
+		// Check if the audio source is set correctly
+		audio.load(); // Reload the audio element to handle source change
+
 		if (isPlaying) {
-			audio.play();
+			audio.play().catch((error) => {
+				console.error('Audio play failed:', error);
+			});
 		}
 
 		// Use Swiper ref to navigate slides
@@ -55,9 +61,15 @@ const Edit = (props) => {
 	const playTrack = (index) => {
 		const audio = audioRef.current;
 		setCurrentSongIdx(index);
-		audio.src = songs[index].source;
+		audio.src = albumItems[index].trackSrc;
+
+		// Ensure the audio element loads the new source
+		audio.load();
+
 		if (isPlaying) {
-			audio.play();
+			audio.play().catch((error) => {
+				console.error('Audio play failed:', error);
+			});
 		}
 	};
 

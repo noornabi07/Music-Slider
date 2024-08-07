@@ -1,13 +1,14 @@
 import { AlignmentToolbar, BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { Dashicon, PanelBody, TabPanel,  ToolbarButton, ToolbarGroup, } from '@wordpress/components';
+import { Dashicon, TabPanel, ToolbarButton, ToolbarGroup, } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState } from 'react';
 
 // Settings Components
 import { tabController } from '../../../../../Components/utils/functions';
 
-import { generalStyleTabs} from '../../../utils/options';
+import { generalStyleTabs } from '../../../utils/options';
 import General from './General/General';
+import Style from './Style/Style';
 
 const Settings = ({ attributes, setAttributes, setActiveIndex }) => {
 	const { items, alignment, textAlign } = attributes;
@@ -36,11 +37,9 @@ const Settings = ({ attributes, setAttributes, setActiveIndex }) => {
 
 				</>}
 
-
 				{'style' === tab.name && <>
-					<PanelBody className='bPlPanelBody' title={__('Custom Style', 'music-slider')} initialOpen={false}>
-						<p>Second Panel</p>
-					</PanelBody>
+					<Style activeAlbum={activeAlbum} setActiveAlbum={setActiveAlbum} attributes={attributes} setAttributes={setAttributes} />
+
 				</>}
 			</>}</TabPanel>
 		</InspectorControls>

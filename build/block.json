@@ -46,6 +46,33 @@
         "openNewTab": true
       }
     },
+    "albumStyles": {
+      "type": "object",
+      "default": {
+        "background": {},
+        "border": {
+          "radius": "5px"
+        }
+      }
+    },
+    "coverStyles": {
+      "type": "object",
+      "default": {
+        "width": {
+          "desktop": "100%",
+          "tablet": "",
+          "mobile": ""
+        },
+        "height": {
+          "desktop": "100%",
+          "tablet": "",
+          "mobile": ""
+        },
+        "coverBorder": {
+          "radius": "0px"
+        }
+      }
+    },
     "columns": {
       "type": "object",
       "default": {
@@ -175,7 +202,7 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
+  "style": "file:./view.css",
   "render": "file:./render.php",
   "viewScript": "file:./view.js"
 }

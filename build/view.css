@@ -1,17 +1,3 @@
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************/
-.bBlocksInspectorInfo {
-  padding: 6px;
-}
-.bBlocksInspectorInfo a {
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.bPlTabPanel .textControl {
-  margin-top: 20px;
-}
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/swiper/swiper.css ***!
   \************************************************************************************************************************************************************************************/
@@ -45,13 +31,13 @@
 :host {
   position: relative;
   display: block;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
   z-index: 1;
 }
 .swiper {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
   position: relative;
   overflow: hidden;
   list-style: none;
@@ -186,7 +172,7 @@
 .swiper-3d .swiper-slide-shadow-top,
 .swiper-3d .swiper-slide-shadow-bottom {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
@@ -197,10 +183,10 @@
   background: rgba(0, 0, 0, 0.15);
 }
 .swiper-3d .swiper-slide-shadow-left {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 .swiper-3d .swiper-slide-shadow-right {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
 .swiper-3d .swiper-slide-shadow-top {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
@@ -212,9 +198,9 @@
   width: 42px;
   height: 42px;
   position: absolute;
-  right: 50%;
+  left: 50%;
   top: 50%;
-  margin-right: -21px;
+  margin-left: -21px;
   margin-top: -21px;
   z-index: 10;
   transform-origin: 50%;
@@ -238,7 +224,7 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
 /* Slide styles end */
@@ -292,7 +278,7 @@
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: var(--swiper-pagination-bottom, 8px);
   top: var(--swiper-pagination-top, auto);
-  right: 0;
+  left: 0;
   width: 100%;
 }
 /* Bullets */
@@ -351,8 +337,8 @@ button.swiper-pagination-bullet {
 }
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
-  left: var(--swiper-pagination-right, 8px);
-  right: var(--swiper-pagination-left, auto);
+  right: var(--swiper-pagination-right, 8px);
+  left: var(--swiper-pagination-left, auto);
   top: 50%;
   transform: translate3d(0px, -50%, 0);
 }
@@ -379,18 +365,18 @@ button.swiper-pagination-bullet {
 }
 .swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic,
 .swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
-  right: 50%;
-  transform: translateX(50%);
+  left: 50%;
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 .swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
   transition: 200ms transform,
-        200ms right;
+        200ms left;
 }
 .swiper-horizontal.swiper-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
   transition: 200ms transform,
-    200ms left;
+    200ms right;
 }
 /* Fraction */
 .swiper-pagination-fraction {
@@ -404,15 +390,15 @@ button.swiper-pagination-bullet {
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: var(--swiper-pagination-color, var(--swiper-theme-color));
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   transform: scale(0);
-  transform-origin: right top;
+  transform-origin: left top;
 }
 .swiper-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  transform-origin: left top;
+  transform-origin: right top;
 }
 .swiper-horizontal > .swiper-pagination-progressbar,
 .swiper-pagination-progressbar.swiper-pagination-horizontal,
@@ -420,7 +406,7 @@ button.swiper-pagination-bullet {
 .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
   width: 100%;
   height: var(--swiper-pagination-progressbar-size, 4px);
-  right: 0;
+  left: 0;
   top: 0;
 }
 .swiper-vertical > .swiper-pagination-progressbar,
@@ -429,10 +415,206 @@ button.swiper-pagination-bullet {
 .swiper-pagination-progressbar.swiper-pagination-horizontal.swiper-pagination-progressbar-opposite {
   width: var(--swiper-pagination-progressbar-size, 4px);
   height: 100%;
-  right: 0;
+  left: 0;
   top: 0;
 }
 .swiper-pagination-lock {
   display: none;
 }
 
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.wp-block-maps-music-slider {
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
+  /* Music Player */
+  /* Music Player Progress */
+  /* Music Player Controls */
+}
+.wp-block-maps-music-slider :root {
+  --primary-clr: rgba(228, 228, 229, 1);
+}
+.wp-block-maps-music-slider * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+.wp-block-maps-music-slider .mapsMusicSlider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+  width: 100%;
+  background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/8727c9b1-be21-4932-a221-4257b59a74dd);
+  background-repeat: no-repeat;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: slidein 120s forwards infinite alternate;
+  padding: 15px 8px;
+}
+@keyframes slidein {
+  0%, 100% {
+    background-position: 20% 0%;
+    background-size: 3400px;
+  }
+  50% {
+    background-position: 100% 0%;
+    background-size: 2400px;
+  }
+}
+.wp-block-maps-music-slider .album-cover {
+  width: 100%;
+}
+.wp-block-maps-music-slider .swiper {
+  width: 100%;
+  padding: 40px 0 100px;
+}
+.wp-block-maps-music-slider .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+  box-sizing: content-box;
+}
+.wp-block-maps-music-slider .swiper-slide {
+  position: relative;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+}
+.wp-block-maps-music-slider .swiper-slide img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+  transform-origin: center;
+  transform: perspective(800px);
+  transition: 0.3s ease-out;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.wp-block-maps-music-slider .swiper-slide-active .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(28, 22, 37, 0.6);
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.4s linear;
+}
+.wp-block-maps-music-slider .swiper-slide:hover .overlay {
+  opacity: 1;
+}
+.wp-block-maps-music-slider .swiper-slide .overlay ion-icon {
+  opacity: 0;
+}
+.wp-block-maps-music-slider .swiper-slide-active:hover .overlay ion-icon {
+  font-size: 4rem;
+  color: #eb0b0b;
+  opacity: 1;
+  cursor: pointer;
+}
+.wp-block-maps-music-slider .music-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-clr);
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+.wp-block-maps-music-slider .music-player h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #fff;
+}
+.wp-block-maps-music-slider .music-player p {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.6;
+  color: #ddd;
+}
+.wp-block-maps-music-slider #progress {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  background: rgba(163, 162, 164, 0.4);
+  border-radius: 4px;
+  margin: 32px 0 24px;
+  cursor: pointer;
+}
+.wp-block-maps-music-slider #progress::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(163, 162, 164, 0.9);
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  outline: 4px solid var(--primary-clr);
+  box-shadow: 0 6px 10px rgba(5, 36, 28, 0.3);
+}
+.wp-block-maps-music-slider .controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wp-block-maps-music-slider .controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  aspect-ratio: 1/1;
+  margin: 20px;
+  background: rgba(163, 162, 164, 0.3);
+  color: var(--primary-clr);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: 0;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 20px rgba(5, 36, 28, 0.3);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.wp-block-maps-music-slider .controls button:is(:hover, :focus-visible) {
+  transform: scale(0.96);
+}
+.wp-block-maps-music-slider .controls button:nth-child(2) {
+  transform: scale(1.3);
+}
+.wp-block-maps-music-slider .controls button:nth-child(2):is(:hover, :focus-visible) {
+  transform: scale(1.25);
+}
+.wp-block-maps-music-slider .mapsMusicSlider {
+  display: inline-block;
+}
+.wp-block-maps-music-slider .icon {
+  font-style: inherit;
+}
+.wp-block-maps-music-slider img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.activeSlide {
+  transform: scale(1.5);
+}
+
+/*# sourceMappingURL=view.css.map*/
