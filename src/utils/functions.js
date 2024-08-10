@@ -18,3 +18,8 @@ export const updateData = (attr, value, ...props) => {
     draft[currentProp] = updateData(draft[currentProp], value, ...remainingProps);
   });
 };
+
+export const getBoxCss = (props, property) => {
+  const result = Object.keys(props).map((key) => `${property}-${key}:${props[key]};`)
+  return result.join(" ")
+} 

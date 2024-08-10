@@ -48,7 +48,7 @@ $primaryColor: #4527a4;
 
   .swiper {
     width: 100%;
-    padding: 40px 0 100px;
+    padding: 40px 0 80px;
   }
 
   .swiper-wrapper {
@@ -114,7 +114,6 @@ $primaryColor: #4527a4;
     cursor: pointer;
   }
 
-
   /* Music Player */
 
   .music-player {
@@ -143,6 +142,24 @@ $primaryColor: #4527a4;
   }
 
   /* Music Player Progress */
+
+  .progress-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .current-time{
+    padding-top: 9px;
+    padding-right: 10px;
+    text-align: center;
+    color: red;
+  }
+  .duration-time {
+    padding-top: 9px;
+    padding-left: 10px;
+    text-align: center;
+    color: red;
+  }
 
   #progress {
     appearance: none;

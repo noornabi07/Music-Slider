@@ -16,8 +16,30 @@ const Edit = (props) => {
 	const audioRef = useRef(null);
 	const swiperRef = useRef(null); // Swiper ref
 	const { albumItems, albumControl } = attributes;
+	const [currentTime, setCurrentTime] = useState(0);
+	const [duration, setDuration] = useState(0);
 
 	useEffect(() => tabController(), [isSelected]);
+
+	useEffect(() => {
+		const audio = audioRef.current;
+
+		const handleLoadedMetadata = () => {
+			setDuration(audio.duration);
+		};
+
+		audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+		return () => {
+			audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+		};
+	}, [audioRef]);
+
+	const formatTime = (time) => {
+		const minutes = Math.floor(time / 60);
+		const seconds = Math.floor(time % 60);
+		return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+	};
 
 	const playPauseSong = () => {
 		const audio = audioRef.current;
@@ -73,11 +95,20 @@ const Edit = (props) => {
 		}
 	};
 
+	// const updateProgress = () => {
+	// 	const audio = audioRef.current;
+	// 	const currentTime = audio.currentTime;
+	// 	const duration = audio.duration;
+	// 	const progress = (currentTime / duration) * 100;
+	// 	setProgress(progress);
+	// };
+
 	const updateProgress = () => {
 		const audio = audioRef.current;
 		const currentTime = audio.currentTime;
-		const duration = audio.duration;
-		const progress = (currentTime / duration) * 100;
+		setCurrentTime(currentTime);
+
+		const progress = (currentTime / audio.duration) * 100;
 		setProgress(progress);
 	};
 
@@ -98,8 +129,8 @@ const Edit = (props) => {
 					<SwiperSlider attributes={attributes} ref={swiperRef} playTrack={playTrack} />
 
 					<div className="music-player">
-						<h1>{albumItems[currentSongIdx].title}</h1>
-						<p>{albumItems[currentSongIdx].name}</p>
+						<h1 className='heading'>{albumItems[currentSongIdx].title}</h1>
+						<p className='paragraph'>{albumItems[currentSongIdx].name}</p>
 
 						<audio
 							ref={audioRef}
@@ -110,15 +141,19 @@ const Edit = (props) => {
 							Your browser does not support the audio element.
 						</audio>
 
-						<input
-							type="range"
-							value={progress}
-							id="progress"
-							onChange={handleSeek}
-							min="0"
-							max="100"
-							step="0.1"
-						/>
+						<div className='progress-container'>
+							<span className="current-time">{formatTime(currentTime)}</span>
+							<input
+								type="range"
+								value={progress}
+								id="progress"
+								onChange={handleSeek}
+								min="0"
+								max="100"
+								step="0.1"
+							/>
+							<span className="duration-time">{formatTime(duration)}</span>
+						</div>
 
 						<div className="controls">
 							<button

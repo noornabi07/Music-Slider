@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Music Slider ===
 Contributors:		bplugins
 Donate link:		https://gum.co/wpdonate/
 Tags:				block, key1, key2, key3, key4
@@ -13,23 +13,23 @@ Short description of the plugin
 
 == Description ==
 
-[Plugin Demo](https://bblockswp.com/demo/plugin-slug) | [Documentation](https://bplugins.com/docs/plugin-slug) | [Get Pro Version](https://bblockswp.com/demo/plugin-slug/#pricing)
+[Plugin Demo](https://bblockswp.com/demo/music-slider) | [Documentation](https://bplugins.com/docs/music-slider) | [Get Pro Version](https://bblockswp.com/demo/music-slider/#pricing)
 
-**[Demos](https://bblockswp.com/demo/plugin-slug)**
+**[Demos](https://bblockswp.com/demo/music-slider)**
 
 Long description of the plugin
 
 
-### Plugin Name Features
+### Music Slider Features
 - **Feature 1**: Feature 1 description.
 
 
-### Plugin Name Pro Features
+### Music Slider Pro Features
 - **Feature 1**: Feature 1 description.
 
 
-= How to use Plugin Name =
-- First, install the Plugin Name plugin from the WordPress dashboard.
+= How to use Music Slider =
+- First, install the Music Slider plugin from the WordPress dashboard.
 - Add the Block Name from the block category called "widgets" in the Gutenberg editor.
 - You can change block settings from the right-side settings sidebar.
 - Enjoy!
@@ -77,13 +77,13 @@ Long description of the plugin
 3. Click on the **Block Name** to add the block
 
 ### Download & Upload:
-1. Download the **Plugin Name** plugin (*.zip file*)
+1. Download the **Music Slider** plugin (*.zip file*)
 2. In your admin area, go to the Plugins menu and click on **Add New**
-3. Click on **Upload Plugin** and choose the **`plugin-slug.zip`** file and click on **Install Now**
+3. Click on **Upload Plugin** and choose the **`music-slider.zip`** file and click on **Install Now**
 4. Activate the plugin and Enjoy!
 
 ### Manually:
-1. Download and upload the **Plugin Name** plugin to the **`/wp-content/plugins/`** directory
+1. Download and upload the **Music Slider** plugin to the **`/wp-content/plugins/`** directory
 2. Activate the plugin through the Plugins menu in WordPress
 
 
@@ -103,7 +103,7 @@ You can use unlimited times as you want.
 
 = Where can I get support? =
 
-You can post your questions on the [support forum here](https://wordpress.org/support/plugin/plugin-slug/)
+You can post your questions on the [support forum here](https://wordpress.org/support/plugin/music-slider/)
 
 
 == Screenshots ==
@@ -138,6 +138,6 @@ assets file destination. ex: public/js/*.min.js
 
 * Public source code GitHub link for review, study, and contribute.
 
-https://github.com/bplugins/plugin-slug
+https://github.com/bplugins/music-slider
 
 For more information on how to contribute to this plugin, please visit our GitHub repository.

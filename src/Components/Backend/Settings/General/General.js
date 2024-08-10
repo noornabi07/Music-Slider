@@ -95,7 +95,7 @@ const General = ({ attributes, setAttributes, activeAlbum, setActiveAlbum }) => 
 
 	return <>
 		{/* Album Panel Setting */}
-		<PanelBody className='bPlPanelBody addRemoveItems editItem' title={__('Albums', 'music-slider')} initialOpen={false}>
+		<PanelBody className='bPlPanelBody' title={__('Albums', 'music-slider')} initialOpen={false}>
 			{
 				albumItems.map((item, index) => {
 					return <PanelBody className='bPlPanelBody' onToggle={() => setActiveAlbum(index)} key={index} title={__(`Album ${index + 1}`, "music-slider")} initialOpen={false}>

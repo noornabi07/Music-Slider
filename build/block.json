@@ -52,6 +52,44 @@
         "background": {},
         "border": {
           "radius": "5px"
+        },
+        "titleTypo": {
+          "fontSize": 24
+        },
+        "nameTypo": {
+          "fontSize": 16
+        },
+        "titleColor": "#fff",
+        "nameColor": "#ddd",
+        "titlePadding": {
+          "top": 2,
+          "right": 0,
+          "bottom": 2,
+          "left": 0
+        },
+        "namePadding": {
+          "top": 2,
+          "right": 0,
+          "bottom": 2,
+          "left": 0
+        },
+        "progress": {
+          "bg": "#ddd",
+          "width": {
+            "desktop": "100%",
+            "tablet": "",
+            "mobile": ""
+          },
+          "currentTimeColor": "#fff",
+          "durationTimeColor": "#fff"
+        },
+        "controls": {
+          "background": "#8e8c91",
+          "width": {
+            "desktop": "50px",
+            "tablet": "",
+            "mobile": ""
+          }
         }
       }
     },
@@ -70,6 +108,11 @@
         },
         "coverBorder": {
           "radius": "0px"
+        },
+        "padding": {
+          "desktop": "",
+          "tablet": "",
+          "mobile": ""
         }
       }
     },

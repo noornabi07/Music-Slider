@@ -34,12 +34,10 @@ const Settings = ({ attributes, setAttributes, setActiveIndex }) => {
 			<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={generalStyleTabs} onSelect={tabController}>{tab => <>
 				{'general' === tab.name && <>
 					<General activeAlbum={activeAlbum} setActiveAlbum={setActiveAlbum} attributes={attributes} setAttributes={setAttributes} />
-
 				</>}
 
 				{'style' === tab.name && <>
 					<Style activeAlbum={activeAlbum} setActiveAlbum={setActiveAlbum} attributes={attributes} setAttributes={setAttributes} />
-
 				</>}
 			</>}</TabPanel>
 		</InspectorControls>
