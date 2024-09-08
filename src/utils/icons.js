@@ -16,19 +16,19 @@ export const horizontalLineIcon = <svg xmlns='http://www.w3.org/2000/svg' width=
 
 
 
-export function IoLogoYoutube(props) {
+export function IoLogoYoutube({...props}) {
 	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 512 512" height="1em" width="1em" {...props}><path d="M508.6 148.8c0-45-33.1-81.2-74-81.2C379.2 65 322.7 64 265 64h-18c-57.6 0-114.2 1-169.6 3.6C36.6 67.6 3.5 104 3.5 149 1 184.6-.1 220.2 0 255.8c-.1 35.6 1 71.2 3.4 106.9 0 45 33.1 81.5 73.9 81.5 58.2 2.7 117.9 3.9 178.6 3.8 60.8.2 120.3-1 178.6-3.8 40.9 0 74-36.5 74-81.5 2.4-35.7 3.5-71.3 3.4-107 .2-35.6-.9-71.2-3.3-106.9zM207 353.9V157.4l145 98.2-145 98.3z" /></svg>;
 }
 
 // All forward icon here
 export function AiOutlineForward(props) {
-	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M825.8 498L538.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L825.8 526c8.3-7.2 8.3-20.8 0-28zm-320 0L218.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L505.8 526c4.1-3.6 6.2-8.8 6.2-14 0-5.2-2.1-10.4-6.2-14z" /></svg>;
+	return <svg {...props} stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M825.8 498L538.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L825.8 526c8.3-7.2 8.3-20.8 0-28zm-320 0L218.4 249.9c-10.7-9.2-26.4-.9-26.4 14v496.3c0 14.9 15.7 23.2 26.4 14L505.8 526c4.1-3.6 6.2-8.8 6.2-14 0-5.2-2.1-10.4-6.2-14z" /></svg>;
 }
 export function IconPlayForwardSharp(props) {
 	return (
 		<svg
 			viewBox="0 0 512 512"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -41,7 +41,7 @@ export function IconFastForward(props) {
 	return (
 		<svg
 			viewBox="0 0 1024 1024"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -54,13 +54,13 @@ export function Icon284Forward2(props) {
 	return (
 		<svg
 			viewBox="0 0 16 16"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
 		>
 			<path
-				fill="#ddd"
+				fill="currentColor"
 				d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zm-3-9L8.5 8 5 10.5zm4 0L12.5 8 9 10.5z"
 			/>
 		</svg>
@@ -70,14 +70,14 @@ export function IconForward(props) {
 	return (
 		<svg
 			viewBox="0 0 21 21"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
 		>
 			<path
-				fill="none"
-				stroke="#ddd"
+				fill="currentColor"
+				stroke="currentColor"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 				d="M12.5 7.5c-5.185-.47-8.52 1.53-10 6 2.825-3.14 6.341-3.718 10-2v3l5-5-5-5z"
@@ -88,13 +88,13 @@ export function IconForward(props) {
 
 // All Backward icon here
 export function AiOutlineBackward(props) {
-	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M485.6 249.9L198.2 498c-8.3 7.1-8.3 20.8 0 27.9l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9zm320 0L518.2 498a18.6 18.6 0 0 0-6.2 14c0 5.2 2.1 10.4 6.2 14l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9z" /></svg>;
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M485.6 249.9L198.2 498c-8.3 7.1-8.3 20.8 0 27.9l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9zm320 0L518.2 498a18.6 18.6 0 0 0-6.2 14c0 5.2 2.1 10.4 6.2 14l287.4 248.2c10.7 9.2 26.4.9 26.4-14V263.8c0-14.8-15.7-23.2-26.4-13.9z" /></svg>;
 }
 export function IconBackward(props) {
 	return (
 		<svg
 			viewBox="0 0 20 20"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -107,7 +107,7 @@ export function IconFastBackward(props) {
 	return (
 		<svg
 			viewBox="0 0 1024 1024"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -120,13 +120,13 @@ export function Icon283Backward(props) {
 	return (
 		<svg
 			viewBox="0 0 16 16"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
 		>
 			<path
-				fill="#ddd"
+				fill="currentColor"
 				d="M8 16A8 8 0 108 0a8 8 0 000 16zM8 1.5a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm3 9L7.5 8 11 5.5zm-4 0L3.5 8 7 5.5z"
 			/>
 		</svg>
@@ -136,14 +136,14 @@ export function IconBackwarded(props) {
 	return (
 		<svg
 			viewBox="0 0 21 21"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
 		>
 			<path
-				fill="none"
-				stroke="#ddd"
+				fill="currentColor"
+				stroke="currentColor"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 				d="M8.5 7.5c5.185-.47 8.52 1.53 10 6-2.825-3.14-6.341-3.718-10-2v3l-5-5 5-5z"
@@ -154,13 +154,13 @@ export function IconBackwarded(props) {
 
 // All Pause icon here
 export function AiOutlinePause(props) {
-	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z" /></svg>;
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M304 176h80v672h-80zm408 0h-64c-4.4 0-8 3.6-8 8v656c0 4.4 3.6 8 8 8h64c4.4 0 8-3.6 8-8V184c0-4.4-3.6-8-8-8z" /></svg>;
 }
 export function IconPauseCircle(props) {
 	return (
 		<svg
 			viewBox="0 0 1024 1024"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -171,15 +171,15 @@ export function IconPauseCircle(props) {
 }
 export function IconPlayPause(props) {
 	return (
-		<svg fill="none" viewBox="0 0 24 24" height="2em" width="2em" {...props}>
-			<path fill="#ddd" d="M11 7H8v10h3V7zM13 17h3V7h-3v10z" />
+		<svg fill="currentColor" viewBox="0 0 24 24" height="2em" width="2em" {...props}>
+			<path fill="currentColor" d="M11 7H8v10h3V7zM13 17h3V7h-3v10z" />
 		</svg>
 	);
 }
 export function IconPauseFill(props) {
 	return (
 		<svg
-			fill="#ddd"
+			fill="currentColor"
 			viewBox="0 0 16 16"
 			height="2em"
 			width="2em"
@@ -194,7 +194,7 @@ export function IconMediaPauseOutline(props) {
 		<svg
 			baseProfile="tiny"
 			viewBox="0 0 24 24"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -206,7 +206,7 @@ export function IconMediaPauseOutline(props) {
 export function IconPauseOctagon(props) {
 	return (
 		<svg
-			fill="#ddd"
+			fill="currentColor"
 			stroke="currentColor"
 			strokeLinecap="round"
 			strokeLinejoin="round"
@@ -221,15 +221,19 @@ export function IconPauseOctagon(props) {
 	);
 }
 
+export function BsFillPlayFill(props) {
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 16 16" height="2em" width="2em" {...props}><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z" /></svg>;
+}
+
 // All play icon here 
 export function AiFillPlayCircle(props) {
-	return <svg stroke="#ddd" fill="#ddd" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z" /></svg>;
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 1024 1024" height="2em" width="2em" {...props}><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z" /></svg>;
 }
 export function IconPlayCircle(props) {
 	return (
 		<svg
 			viewBox="0 0 1024 1024"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -242,7 +246,7 @@ export function IconPlaySquare(props) {
 	return (
 		<svg
 			viewBox="0 0 1024 1024"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -255,7 +259,7 @@ export function IconPlay(props) {
 	return (
 		<svg
 			viewBox="0 0 384 512"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
@@ -268,14 +272,14 @@ export function IconMusic_play_button(props) {
 	return (
 		<svg
 			viewBox="0 0 64 64"
-			fill="#ddd"
+			fill="currentColor"
 			height="2em"
 			width="2em"
 			{...props}
 		>
 			<g
 				fill="none"
-				stroke="#ddd"
+				stroke="currentColor"
 				strokeMiterlimit={10}
 				strokeWidth={2}
 			>
@@ -284,4 +288,44 @@ export function IconMusic_play_button(props) {
 			</g>
 		</svg>
 	);
+}
+
+
+// Love icon
+export function GiSelfLove(props) {
+	return <svg
+		{...props}
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 24 24"
+		fill="currentColor"
+		height="2em" width="2em">
+		<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+	</svg>;
+}
+
+// Insert link icon
+
+export function FaExternalLinkAlt(props) {
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 512 512" height="2em" width="2em" {...props}><path d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" /></svg>;
+}
+
+// Left Arrow icon 
+export function BiArrowToLeft(props) {
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 24 24" height="2em" width="2em" {...props}><path d="M4 6H6V18H4zM14.293 5.293L7.586 12 14.293 18.707 15.707 17.293 11.414 13 20 13 20 11 11.414 11 15.707 6.707z" /></svg>;
+}
+
+// Right Arrow icon 
+export function BiArrowToRight(props) {
+	return <svg stroke="currentColor" fill="currentColor" strokeWidth={0} viewBox="0 0 24 24" height="2em" width="2em" {...props}><path d="M18 6H20V18H18zM4 13L12.586 13 8.293 17.293 9.707 18.707 16.414 12 9.707 5.293 8.293 6.707 12.586 11 4 11z" /></svg>;
+}
+
+// Play 
+export function ImPlay2(props) {
+	return <svg stroke="currentColor" fill="#FFFFFF" strokeWidth={0} viewBox="0 0 16 16" height="1em" width="1em" {...props}><path d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM8 14.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zM6 4.5l6 3.5-6 3.5z" /></svg>;
+}
+
+// pause 
+
+export function ImPause(props) {
+	return <svg stroke="currentColor" fill="#FFFFFF" strokeWidth={0} viewBox="0 0 16 16" height="1em" width="1em" {...props}><path d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM8 14.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zM5 5h2v6h-2zM9 5h2v6h-2z" /></svg>;
 }

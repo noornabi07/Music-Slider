@@ -10,6 +10,7 @@ import { IoLogoYoutube } from '../../utils/icons';
 const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { albumItems, albumOptions } = attributes;
+  const { isExternalLink } = albumOptions;
 
   // Use useRef to store the swiper instance
   const swiperRef = useRef(null);
@@ -22,6 +23,7 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
       }
     },
   }));
+
 
   return (
     <div className="album-cover">
@@ -37,7 +39,7 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
           }}
           onActiveIndexChange={(val) => {
             setActiveSlide(val.activeIndex);
-            playTrack(val.activeIndex); 
+            playTrack(val.activeIndex);
           }}
           coverflowEffect={{
             rotate: 50,
@@ -47,13 +49,13 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
             slideShadows: true,
           }}
           spaceBetween={50}
-          slidesPerView={5}
+          slidesPerView='auto'
         >
           {albumItems.map((item, index) => (
             <SwiperSlide key={index}>
               <div className={`${activeSlide === index ? 'activeSlide' : ''}`}>
                 <img src={item?.coverSrc} alt={item?.title} />
-                {activeSlide === index && <div className="overlay">
+                {activeSlide === index && isExternalLink === true &&  <div className="overlay">
                   <span onClick={() => item.youtubeSrc ? window.open(`${item.youtubeSrc}`, albumOptions.openNewTab ? '_blank' : '_self') : {}} >
                     <IoLogoYoutube style={{ color: "red", cursor: "pointer", width: "20px" }} className='youtubeIcon' />
                   </span>

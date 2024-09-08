@@ -15,6 +15,31 @@ $primaryColor: #4527a4;
   }
 }
 
+.components-tab-panel__tabs {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.my-tab-panel .components-tab-panel__tabs {
+  display: flex;
+  justify-content: space-between;
+}
+.components-button.components-tab-panel__tabs-item {
+  font-size: 15px;
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.components-button.components-tab-panel__tabs-item.active-tab {
+  border-bottom: 4px solid #4527a4;
+  padding-bottom: 5px;
+  border-radius: 3px;
+}
+
 
 // .wp-block-maps-music-slider {
 //

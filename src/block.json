@@ -3,10 +3,10 @@
   "apiVersion": 3,
   "name": "maps/music-slider",
   "version": "1.0.0",
-  "title": "Music Slider",
+  "title": "Slider Music Player",
   "category": "widgets",
-  "description": "Add a dynamic music player to your WordPress site with the Music Player Slider Block for Gutenberg.",
-  "keywords": ["key1", "key2", "key3", "key4", "key5"],
+  "description": "Add a dynamic music player to your WordPress site.",
+  "keywords": ["music-slider", "music", "carousel-slider", "music-player-block", "Gutenberg"],
   "textdomain": "music-slider",
   "attributes": {
     "align": {
@@ -39,7 +39,10 @@
     "albumOptions": {
       "type": "object",
       "default": {
-        "openNewTab": true
+        "openNewTab": true,
+        "isExternalLink": true,
+        "isAutoSlide": true,
+        "activeThemes": "default"
       }
     },
 
@@ -58,12 +61,13 @@
           "bg": "#ddd",
           "width": { "desktop": "100%", "tablet": "", "mobile": "" },
           "currentTimeColor": "#fff",
-          "durationTimeColor": "#fff"
-
+          "durationTimeColor": "#fff",
+          "progressBarColor": "red"
         },
         "controls": {
           "background": "#8e8c91",
-          "width": { "desktop": "50px", "tablet": "", "mobile": "" }
+          "width": { "desktop": "50px", "tablet": "", "mobile": "" },
+          "color": "#ddd"
         }
       }
     },
@@ -105,95 +109,9 @@
     "textAlign": {
       "type": "string",
       "default": "center"
-    },
-    "width": {
-      "type": "string",
-      "default": "80%"
-    },
-    "background": {
-      "type": "object",
-      "default": {
-        "color": "#0000"
-      }
-    },
-    "content": {
-      "type": "string",
-      "default": "Content of the block",
-      "selector": ".prefixBlockName .content"
-    },
-    "typography": {
-      "type": "object",
-      "default": {
-        "fontSize": 25
-      }
-    },
-    "color": {
-      "type": "string",
-      "default": "#333"
-    },
-    "colors": {
-      "type": "object",
-      "default": {
-        "color": "#333",
-        "bg": "#fff"
-      }
-    },
-    "img": {
-      "type": "object",
-      "default": {
-        "id": null,
-        "url": "",
-        "alt": "",
-        "title": ""
-      }
-    },
-    "isIcon": {
-      "type": "boolean",
-      "default": true
-    },
-    "icon": {
-      "type": "object",
-      "default": {
-        "class": "fa-brands fa-wordpress"
-      }
-    },
-    "separator": {
-      "type": "object",
-      "default": {
-        "width": "20%",
-        "height": "2px",
-        "style": "solid",
-        "color": "#bbb"
-      }
-    },
-    "padding": {
-      "type": "object",
-      "default": {
-        "top": "15px",
-        "right": "30px",
-        "bottom": "15px",
-        "left": "30px"
-      }
-    },
-    "margin": {
-      "type": "object",
-      "default": {
-        "top": "0px",
-        "right": "0px",
-        "bottom": "15px",
-        "left": "0px"
-      }
-    },
-    "border": {
-      "type": "object",
-      "default": {
-        "radius": "5px"
-      }
-    },
-    "shadow": {
-      "type": "array",
-      "default": []
     }
+    
+
   },
   "supports": {
     "align": ["wide", "full"],

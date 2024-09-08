@@ -1,4 +1,4 @@
-=== Music Slider ===
+=== Slider Music Player===
 Contributors:		bplugins
 Donate link:		https://gum.co/wpdonate/
 Tags:				block, key1, key2, key3, key4
@@ -20,16 +20,16 @@ Short description of the plugin
 Long description of the plugin
 
 
-### Music Slider Features
+### Slider Music Player Features
 - **Feature 1**: Feature 1 description.
 
 
-### Music Slider Pro Features
+### Slider Music Player Pro Features
 - **Feature 1**: Feature 1 description.
 
 
-= How to use Music Slider =
-- First, install the Music Slider plugin from the WordPress dashboard.
+= How to use Slider Music Player =
+- First, install the Slider Music Player plugin from the WordPress dashboard.
 - Add the Block Name from the block category called "widgets" in the Gutenberg editor.
 - You can change block settings from the right-side settings sidebar.
 - Enjoy!
@@ -77,13 +77,13 @@ Long description of the plugin
 3. Click on the **Block Name** to add the block
 
 ### Download & Upload:
-1. Download the **Music Slider** plugin (*.zip file*)
+1. Download the **Slider Music Player** plugin (*.zip file*)
 2. In your admin area, go to the Plugins menu and click on **Add New**
 3. Click on **Upload Plugin** and choose the **`music-slider.zip`** file and click on **Install Now**
 4. Activate the plugin and Enjoy!
 
 ### Manually:
-1. Download and upload the **Music Slider** plugin to the **`/wp-content/plugins/`** directory
+1. Download and upload the **Slider Music Player** plugin to the **`/wp-content/plugins/`** directory
 2. Activate the plugin through the Plugins menu in WordPress
 
 

@@ -145,10 +145,12 @@ $primaryColor: #4527a4;
 
   .progress-container {
     display: flex;
+    max-width: 100%;
     align-items: center;
+    justify-content: center;
   }
 
-  .current-time{
+  .current-time {
     padding-top: 9px;
     padding-right: 10px;
     text-align: center;
@@ -170,6 +172,7 @@ $primaryColor: #4527a4;
     border-radius: 4px;
     margin: 32px 0 24px;
     cursor: pointer;
+    box-sizing: border-box;
   }
 
   #progress::-webkit-slider-thumb {
@@ -229,9 +232,172 @@ $primaryColor: #4527a4;
     font-style: inherit;
   }
 
+  .prblmIcon {
+    margin-left: 4px;
+  }
+
   img {
     width: 100%;
     max-width: 100%;
+  }
+
+  // Other themes style
+  .mini-wrapper {
+    width: 80%;
+    height: 65vh;
+    border-radius: 8px;
+    background-color: #eef3f7;
+    box-shadow: 0px 9px 25px -5px rgba(50, 88, 130, 0.32);
+    margin-top: 30px;
+    padding: 40px;
+  }
+
+  .mini-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mini-player img {
+    width: 83%;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+    margin-top: -90px;
+  }
+
+  // animation image change here 
+
+  .scale-fade-out {
+    transform: scale(0.8);
+    opacity: 1;
+    transition:
+      transform 0.4s ease-in-out,
+      opacity 0.4s ease-in-out;
+  }
+
+  .scale-fade-out-active {
+    transform: scale(1.2); /* Scale down to 80% */
+    opacity: 0; /* Fade out */
+  }
+
+  /* Initial Fade-In Animation */
+  .fade-in {
+    opacity: 0;
+    transform: scale(0.8); /* Start with a slight scale-up */
+    transition:
+      transform 0.4s ease-in-out,
+      opacity 0.4s ease-in-out;
+  }
+
+  .fade-in-active {
+    transform: scale(1); /* Scale to normal size */
+    opacity: 1; /* Fade in */
+  }
+
+  .mini-player img::after {
+    content: "";
+    z-index: 2;
+    box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+  }
+  .mini-controller {
+    margin-top: 30px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .mini-controller .love {
+    font-size: 16px;
+    color: #acb8cc;
+  }
+  .mini-controller .love:hover {
+    color: #4527a4;
+  }
+  .mini-controller .loveDiv {
+    background-color: transparent;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .mini-controller .loveDiv:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+  .mini-controller .link {
+    font-size: 13px;
+    color: #acb8cc;
+  }
+  .mini-controller .link:hover {
+    color: #4527a4;
+  }
+  .mini-controller .linkDiv {
+    background-color: transparent;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .mini-controller .linkDiv:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+  .leftArrow,
+  .rightArrow {
+    color: #acb8cc;
+  }
+  .leftArrow:hover,
+  .rightArrow:hover {
+    color: #4527a4;
+  }
+  .leftDiv,
+  .rightDiv {
+    background-color: transparent;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .leftDiv:hover,
+  .rightDiv:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+  .playCircle {
+    font-size: 65px;
+    margin-left: 110px;
+    cursor: pointer;
+  }
+  .pauseCircle {
+    font-size: 65px;
+    margin-left: 110px;
+    cursor: pointer;
+  }
+
+  .mini-title {
+    font-family: serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: #71829e;
+  }
+  .mini-name {
+    font-size: 25px;
+    font-family: serif;
+    color: #acb8cc;
   }
 }
 

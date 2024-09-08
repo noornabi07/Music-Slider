@@ -3,14 +3,19 @@ import { __ } from '@wordpress/i18n';
 import { verticalLineIcon, horizontalLineIcon } from './icons';
 
 export const layouts = [
-	{ label: __('Vertical', 'textdomain'), value: 'vertical', icon: verticalLineIcon },
-	{ label: __('Horizontal', 'textdomain'), value: 'horizontal', icon: horizontalLineIcon }
+	{ label: __('Vertical', 'music-slider'), value: 'vertical', icon: verticalLineIcon },
+	{ label: __('Horizontal', 'music-slider'), value: 'horizontal', icon: horizontalLineIcon }
 ];
 
 export const generalStyleTabs = [
-	{ name: 'general', title: __('General', 'textdomain') },
-	{ name: 'style', title: __('Style', 'textdomain') }
+	{ name: 'general', title: __('General', 'music-slider') },
+	{ name: 'style', title: __('Style', 'music-slider') }
 ];
+
+export const themesTabs = [
+	{ name: 'default', title: __('Default', 'music-slider') },
+	{name: 'others', title: __('Other', 'music-slider')}
+]
 
 
 export const songs = [
@@ -91,6 +96,6 @@ export const newItems = {
 	title: "Pawn It All",
 	name: "Alicia Keys",
 	trackSrc: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
-	coverSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNKzM00tPRpZcfZVoB1EslqTJfntwXNV-Gk540XmJzWDuwniOnpg5yJ1kvDlzlefvELoY&usqp=CAU",
+	coverSrc: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/bd9bcc80-a9ab-4d54-a460-ffdb77f22a72",
 	youtubeSrc: "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
 }
