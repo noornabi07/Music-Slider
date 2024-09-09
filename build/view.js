@@ -228,13 +228,24 @@ const MiniPlayer = ({
 }) => {
   const {
     albumItems,
-    albumStyles
+    albumStyles,
+    albumOptions
   } = attributes;
   const [currentMiniSongIdx, setCurrentMiniSongIdx] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const [isMiniPlaying, setIsMiniPlaying] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [progressMini, setProgressMini] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [currentMiniTime, setCurrentMiniTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // State for current time
+  const [duration, setDuration] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // State for duration
   const audioRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [isFadingOut, setIsFadingOut] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const {
+    isExternalLink
+  } = albumOptions;
+  const targetPage = albumOptions.openNewTab ? '_blank' : '_self';
+
+  // ----------------------------------------------------------- update code here ----------------------------
+
+  // Handle play/pause
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (isMiniPlaying) {
       audioRef.current.play();
@@ -242,31 +253,45 @@ const MiniPlayer = ({
       audioRef.current.pause();
     }
   }, [isMiniPlaying, currentMiniSongIdx]);
+
+  // Update progress, current time, and duration
+  const handleTimeUpdate = () => {
+    const currentTime = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+    setCurrentMiniTime(currentTime); // Set current time
+    setDuration(duration); // Set duration
+    setProgressMini(currentTime / duration * 100); // Update progress percentage
+  };
+
+  // Handle progress change
+  const handleProgressChange = e => {
+    const newProgress = e.target.value;
+    audioRef.current.currentTime = newProgress / 100 * audioRef.current.duration;
+    setProgressMini(newProgress);
+  };
+
+  // Handle next song with transition
   const handleNextSong = () => {
     handleImageTransition(() => {
       setCurrentMiniSongIdx(prevIdx => (prevIdx + 1) % albumItems.length);
       setIsMiniPlaying(true); // Automatically play the next song
     });
   };
+
+  // Handle previous song with transition
   const handlePreviousSong = () => {
     handleImageTransition(() => {
       setCurrentMiniSongIdx(prevIdx => prevIdx === 0 ? albumItems.length - 1 : prevIdx - 1);
       setIsMiniPlaying(true); // Automatically play the previous song
     });
   };
+
+  // Toggle play/pause button
   const handlePlayPause = () => {
     setIsMiniPlaying(prevIsPlaying => !prevIsPlaying);
   };
-  const handleTimeUpdate = () => {
-    const currentTime = audioRef.current.currentTime;
-    const duration = audioRef.current.duration;
-    setProgressMini(currentTime / duration * 100);
-  };
-  const handleProgressChange = e => {
-    const newProgress = e.target.value;
-    audioRef.current.currentTime = newProgress / 100 * audioRef.current.duration;
-    setProgressMini(newProgress);
-  };
+
+  // Image transition function
   const handleImageTransition = callback => {
     setIsFadingOut(true);
     setTimeout(() => {
@@ -274,8 +299,15 @@ const MiniPlayer = ({
       setIsFadingOut(false);
     }, 350);
   };
+
+  // Format time in mm:ss format
+  const formatTime = time => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`;
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mini-wrapper"
+    className: "mini-wrapper mapsMusicSlider"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mini-player"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -287,26 +319,35 @@ const MiniPlayer = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "loveDiv"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.GiSelfLove, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "love"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), isExternalLink && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "linkDiv"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: albumItems[currentMiniSongIdx].youtubeSrc,
+    target: targetPage
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.FaExternalLinkAlt, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "link"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onClick: handlePreviousSong,
     className: "leftDiv"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.BiArrowToLeft, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "leftArrow"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onClick: handleNextSong,
     className: "rightDiv"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.BiArrowToRight, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "rightArrow"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onClick: handlePlayPause
   }, isMiniPlaying ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.ImPause, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "pauseCircle"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.ImPlay2, {
+    color: albumStyles?.controls?.miniIconColor,
     className: "playCircle"
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mini-content"
@@ -324,7 +365,9 @@ const MiniPlayer = ({
     type: "audio/mpeg"
   }), "Your browser does not support the audio element."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "progress-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "current-time"
+  }, formatTime(currentMiniTime)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "range",
     value: progressMini ? progressMini : 0,
     id: "progress",
@@ -335,7 +378,9 @@ const MiniPlayer = ({
     style: {
       background: `linear-gradient(to right, ${albumStyles?.progress?.progressBarColor} ${progressMini}%, ${albumStyles?.progress?.bg} ${progressMini}%)`
     }
-  })));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "duration-time"
+  }, formatTime(duration))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MiniPlayer);
 
@@ -475,8 +520,6 @@ const Style = ({
     nameTypo,
     titleColor,
     nameColor,
-    titlePadding,
-    namePadding,
     progress,
     controls
   } = albumStyles;
@@ -488,6 +531,7 @@ const Style = ({
     durationTimeColor,
     currentTimeColor
   } = progress;
+  console.log("Controls object style here", controls);
   const mainSl = `#${id}`;
   const musicSliderSl = `${mainSl} .mapsMusicSlider`;
   const albumImageSl = `${musicSliderSl} .album-cover .swiper`;
@@ -499,11 +543,36 @@ const Style = ({
   const progressContainerSl = `${musicPlayerSl} .progress-container`;
   const currentTimeSl = `${progressContainerSl} .current-time`;
   const durationTimeSl = `${progressContainerSl} .duration-time`;
+
+  // MiniPlayer select class & id
+
+  const miniHeadingSl = `${musicSliderSl} .mini-content .mini-title`;
+  const miniPragraphSl = `${musicSliderSl} .mini-content .mini-name`;
+  const miniProgressSl = `${musicSliderSl} .progress-container #progress`;
+  const miniProgressContainerSl = `${musicSliderSl} .progress-container`;
+  const miniCurrentTimeSl = `${musicSliderSl} .progress-container .current-time`;
+  const miniDurationTimeSl = `${musicSliderSl} .progress-container .duration-time`;
+
+  // icon selector all here
+  const miniController = `${musicSliderSl} .mini-controller`;
+  const loveDiv = `${miniController} .loveDiv`;
+  const linkDiv = `${miniController} .linkDiv`;
+  const leftDiv = `${miniController} .leftDiv`;
+  const rightDiv = `${miniController} .rightDiv`;
+
+  // icon color selector
+  const loveIcon = `${loveDiv} .love`;
+  const linkIcon = `${linkDiv} .link`;
+  const leftIcon = `${leftDiv} .leftArrow`;
+  const rightIcon = `${rightDiv} .rightArrow`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
 		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(headingSl, titleTypo)?.styles}
 		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(paragraphSl, nameTypo)?.styles}
+
+		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(miniHeadingSl, titleTypo)?.styles}
+		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(miniPragraphSl, nameTypo)?.styles}
 
 		${musicSliderSl}{
 			${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(background)}
@@ -517,36 +586,58 @@ const Style = ({
 		}
 		${headingSl}{
 			color: ${titleColor};
-			padding-top: ${titlePadding.top};
-         	padding-bottom: ${titlePadding.bottom};
-            padding-left: ${titlePadding.left};
-            padding-right: ${titlePadding.right};
+		}
+		${miniHeadingSl}{
+			color: ${titleColor};
 		}
 		${paragraphSl}{
 			color: ${nameColor};
-			padding-top: ${namePadding.top}px;
-         	padding-bottom: ${namePadding.bottom}px;
-            padding-left: ${namePadding.left}px;
-            padding-right: ${namePadding.right}px;
 		}
-		
+		${miniPragraphSl}{
+			color: ${nameColor};
+		}
 		${progressSl}{
+			${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(bg)}
+		}
+		${miniProgressSl}{
 			${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(bg)}
 		}
 		${progressContainerSl}{
 		width: ${albumStyles.progress.width.desktop};
 		}
+		${miniProgressContainerSl}{
+		width: ${albumStyles.progress.width.desktop};
+		}
 		${currentTimeSl}{
 		  color: ${currentTimeColor};
+		}
+		${miniCurrentTimeSl}{
+			color: ${currentTimeColor};
 		}
 		${durationTimeSl}{
 		 color: ${durationTimeColor};
 		}
+		${miniDurationTimeSl}{
+			color: ${durationTimeColor};
+		}
 		${controlSl} button{
-		width: ${albumStyles.controls.width.desktop};
+			width: ${albumStyles.controls.width.desktop};
 		 ${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(controls?.background)}
 		}
+		
+		${loveDiv}:hover,
+		${linkDiv}:hover,
+		${leftDiv}:hover,
+		${rightDiv}:hover{
+			${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(controls?.hoverBgColor)}
+		}
 
+		${loveIcon}:hover,
+		${linkIcon}:hover,
+		${leftIcon}:hover,
+		${rightIcon}:hover{
+			color: ${controls?.hoverMiniIconColor};
+		}
 
 
 		@media only screen and (min-width:641px) and (max-width: 1024px){
@@ -575,7 +666,7 @@ const Style = ({
 		${controlSl} button{
 		  width: ${albumStyles.controls.width.mobile};
 		}
-        }
+  }
 	`
     }
   });
@@ -1350,7 +1441,7 @@ function BiArrowToRight(props) {
 function ImPlay2(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     stroke: "currentColor",
-    fill: "#FFFFFF",
+    fill: "currentColor",
     strokeWidth: 0,
     viewBox: "0 0 16 16",
     height: "1em",
@@ -1366,7 +1457,7 @@ function ImPlay2(props) {
 function ImPause(props) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     stroke: "currentColor",
-    fill: "#FFFFFF",
+    fill: "currentColor",
     strokeWidth: 0,
     viewBox: "0 0 16 16",
     height: "1em",

@@ -1,4 +1,4 @@
-import { Button, TabPanel, PanelBody, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
+import { Button, PanelBody, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { produce } from 'immer';
 import React, { useState } from 'react';
@@ -257,82 +257,87 @@ const General = ({ attributes, setAttributes, setActiveAlbum }) => {
 			/>
 		</PanelBody>
 
-		<PanelBody title={__("Control Options ", "music-slider")} initialOpen={false}>
+		{/* If here theme is default active then work it */}
+		{
+			albumOptions?.activeThemes === "default" &&
+			// control Option setting icon
+			<PanelBody title={__("Control Options ", "music-slider")} initialOpen={false}>
 
-			{/* Auto Play Slide Toggle */}
-			<ToggleControl
-				label="Track Auto Slide"
-				checked={isAutoSlide}
-				onChange={(val) => {
-					const newTabs = produce(albumOptions, draft => {
-						draft.isAutoSlide = val
-					})
-					setAttributes({ albumOptions: newTabs })
-				}}
-			/>
-
-
-			{/* Forward Icons */}
-			<div className="arrowBtn" style={{ marginTop: "20px" }}>
-				<h4>Choice Backward Forward Icons</h4>
-				<button onClick={() => handleChangeIcon('first', 'second', 'bf1')} style={getButtonStyle(selectedBfButton, 'bf1')}>
-					<AiOutlineForward width="24" height="24" />
-				</button>
-				<button onClick={() => handleChangeIcon('third', 'four', 'bf2')} style={getButtonStyle(selectedBfButton, 'bf2')}>
-					<IconPlayForwardSharp width="24" height="24" />
-				</button>
-				<button onClick={() => handleChangeIcon('five', 'six', 'bf3')} style={getButtonStyle(selectedBfButton, 'bf3')}>
-					<IconFastForward width="24" height="24" />
-				</button>
-				<button onClick={() => handleChangeIcon('seven', 'eight', 'bf4')} style={getButtonStyle(selectedBfButton, 'bf4')}>
-					<Icon284Forward2 width="24" height="24" />
-				</button>
-				<button onClick={() => handleChangeIcon('nine', 'ten', 'bf5')} style={getButtonStyle(selectedBfButton, 'bf5')}>
-					<IconForward width="24" height="24" />
-				</button>
-			</div>
+				{/* Auto Play Slide Toggle */}
+				<ToggleControl
+					label="Track Auto Slide"
+					checked={isAutoSlide}
+					onChange={(val) => {
+						const newTabs = produce(albumOptions, draft => {
+							draft.isAutoSlide = val
+						})
+						setAttributes({ albumOptions: newTabs })
+					}}
+				/>
 
 
-			{/* Pause Icons */}
-			<div className="arrowBtn" style={{ marginTop: "20px" }}>
-				<h4>Choice Your Pause Icons</h4>
-				<button onClick={() => handlePauseChangeIcon('pFirst', 'pb1')} style={getButtonStyle(pauseButton, 'pb1')}>
-					<AiOutlinePause width="24" height="24" />
-				</button>
-				<button onClick={() => handlePauseChangeIcon('pSecond', 'pb2')} style={getButtonStyle(pauseButton, 'pb2')}>
-					<IconPauseCircle width="24" height="24" />
-				</button>
-				<button onClick={() => handlePauseChangeIcon('pThird', 'pb3')} style={getButtonStyle(pauseButton, 'pb3')}>
-					<IconPlayPause width="24" height="24" />
-				</button>
-				<button onClick={() => handlePauseChangeIcon('pFour', 'pb4')} style={getButtonStyle(pauseButton, 'pb4')}>
-					<IconPauseFill width="24" height="24" />
-				</button>
-				<button onClick={() => handlePauseChangeIcon('pFive', 'pb5')} style={getButtonStyle(pauseButton, 'pb5')}>
-					<IconMediaPauseOutline width="24" height="24" />
-				</button>
-			</div>
+				{/* Forward Icons */}
+				<div className="arrowBtn" style={{ marginTop: "20px" }}>
+					<h4>Choice Backward Forward Icons</h4>
+					<button onClick={() => handleChangeIcon('first', 'second', 'bf1')} style={getButtonStyle(selectedBfButton, 'bf1')}>
+						<AiOutlineForward width="24" height="24" />
+					</button>
+					<button onClick={() => handleChangeIcon('third', 'four', 'bf2')} style={getButtonStyle(selectedBfButton, 'bf2')}>
+						<IconPlayForwardSharp width="24" height="24" />
+					</button>
+					<button onClick={() => handleChangeIcon('five', 'six', 'bf3')} style={getButtonStyle(selectedBfButton, 'bf3')}>
+						<IconFastForward width="24" height="24" />
+					</button>
+					<button onClick={() => handleChangeIcon('seven', 'eight', 'bf4')} style={getButtonStyle(selectedBfButton, 'bf4')}>
+						<Icon284Forward2 width="24" height="24" />
+					</button>
+					<button onClick={() => handleChangeIcon('nine', 'ten', 'bf5')} style={getButtonStyle(selectedBfButton, 'bf5')}>
+						<IconForward width="24" height="24" />
+					</button>
+				</div>
 
-			{/* Play Icons */}
-			<div className="arrowBtn" style={{ marginTop: "20px" }}>
-				<h4>Choice Your Play Icons</h4>
-				<button onClick={() => handlePlayChangeIcon('sFirst', 'sb1')} style={getButtonStyle(playButton, 'sb1')}>
-					<AiFillPlayCircle width="24" height="24" />
-				</button>
-				<button onClick={() => handlePlayChangeIcon('sSecond', 'sb2')} style={getButtonStyle(playButton, 'sb2')}>
-					<BsFillPlayFill width="24" height="24" />
-				</button>
-				<button onClick={() => handlePlayChangeIcon('sThird', 'sb3')} style={getButtonStyle(playButton, 'sb3')}>
-					<IconPlaySquare width="24" height="24" />
-				</button>
-				<button onClick={() => handlePlayChangeIcon('sFour', 'sb4')} style={getButtonStyle(playButton, 'sb4')}>
-					<IconPlay width="24" height="24" />
-				</button>
-				<button onClick={() => handlePlayChangeIcon('sFive', 'sb5')} style={getButtonStyle(playButton, 'sb5')}>
-					<IconMusic_play_button width="24" height="24" />
-				</button>
-			</div>
-		</PanelBody>
+
+				{/* Pause Icons */}
+				<div className="arrowBtn" style={{ marginTop: "20px" }}>
+					<h4>Choice Your Pause Icons</h4>
+					<button onClick={() => handlePauseChangeIcon('pFirst', 'pb1')} style={getButtonStyle(pauseButton, 'pb1')}>
+						<AiOutlinePause width="24" height="24" />
+					</button>
+					<button onClick={() => handlePauseChangeIcon('pSecond', 'pb2')} style={getButtonStyle(pauseButton, 'pb2')}>
+						<IconPauseCircle width="24" height="24" />
+					</button>
+					<button onClick={() => handlePauseChangeIcon('pThird', 'pb3')} style={getButtonStyle(pauseButton, 'pb3')}>
+						<IconPlayPause width="24" height="24" />
+					</button>
+					<button onClick={() => handlePauseChangeIcon('pFour', 'pb4')} style={getButtonStyle(pauseButton, 'pb4')}>
+						<IconPauseFill width="24" height="24" />
+					</button>
+					<button onClick={() => handlePauseChangeIcon('pFive', 'pb5')} style={getButtonStyle(pauseButton, 'pb5')}>
+						<IconMediaPauseOutline width="24" height="24" />
+					</button>
+				</div>
+
+				{/* Play Icons */}
+				<div className="arrowBtn" style={{ marginTop: "20px" }}>
+					<h4>Choice Your Play Icons</h4>
+					<button onClick={() => handlePlayChangeIcon('sFirst', 'sb1')} style={getButtonStyle(playButton, 'sb1')}>
+						<AiFillPlayCircle width="24" height="24" />
+					</button>
+					<button onClick={() => handlePlayChangeIcon('sSecond', 'sb2')} style={getButtonStyle(playButton, 'sb2')}>
+						<BsFillPlayFill width="24" height="24" />
+					</button>
+					<button onClick={() => handlePlayChangeIcon('sThird', 'sb3')} style={getButtonStyle(playButton, 'sb3')}>
+						<IconPlaySquare width="24" height="24" />
+					</button>
+					<button onClick={() => handlePlayChangeIcon('sFour', 'sb4')} style={getButtonStyle(playButton, 'sb4')}>
+						<IconPlay width="24" height="24" />
+					</button>
+					<button onClick={() => handlePlayChangeIcon('sFive', 'sb5')} style={getButtonStyle(playButton, 'sb5')}>
+						<IconMusic_play_button width="24" height="24" />
+					</button>
+				</div>
+			</PanelBody>
+		}
 	</>
 };
 

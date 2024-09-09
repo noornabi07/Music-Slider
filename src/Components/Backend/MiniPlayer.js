@@ -2,14 +2,22 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BiArrowToLeft, BiArrowToRight, FaExternalLinkAlt, GiSelfLove, ImPause, ImPlay2 } from '../../utils/icons';
 
 const MiniPlayer = ({ attributes }) => {
-  const { albumItems, albumStyles } = attributes;
+  const { albumItems, albumStyles, albumOptions } = attributes;
   const [currentMiniSongIdx, setCurrentMiniSongIdx] = useState(0);
   const [isMiniPlaying, setIsMiniPlaying] = useState(false);
   const [progressMini, setProgressMini] = useState(0);
+  const [currentMiniTime, setCurrentMiniTime] = useState(0); // State for current time
+  const [duration, setDuration] = useState(0); // State for duration
   const audioRef = useRef(null);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
+  const { isExternalLink } = albumOptions;
 
+  const targetPage = albumOptions.openNewTab ? '_blank' : '_self';
+
+  // ----------------------------------------------------------- update code here ----------------------------
+  
+  // Handle play/pause
   useEffect(() => {
     if (isMiniPlaying) {
       audioRef.current.play();
@@ -18,6 +26,24 @@ const MiniPlayer = ({ attributes }) => {
     }
   }, [isMiniPlaying, currentMiniSongIdx]);
 
+  // Update progress, current time, and duration
+  const handleTimeUpdate = () => {
+    const currentTime = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+
+    setCurrentMiniTime(currentTime); // Set current time
+    setDuration(duration); // Set duration
+    setProgressMini((currentTime / duration) * 100); // Update progress percentage
+  };
+
+  // Handle progress change
+  const handleProgressChange = (e) => {
+    const newProgress = e.target.value;
+    audioRef.current.currentTime = (newProgress / 100) * audioRef.current.duration;
+    setProgressMini(newProgress);
+  };
+
+  // Handle next song with transition
   const handleNextSong = () => {
     handleImageTransition(() => {
       setCurrentMiniSongIdx((prevIdx) => (prevIdx + 1) % albumItems.length);
@@ -25,6 +51,7 @@ const MiniPlayer = ({ attributes }) => {
     });
   };
 
+  // Handle previous song with transition
   const handlePreviousSong = () => {
     handleImageTransition(() => {
       setCurrentMiniSongIdx((prevIdx) =>
@@ -34,32 +61,29 @@ const MiniPlayer = ({ attributes }) => {
     });
   };
 
+  // Toggle play/pause button
   const handlePlayPause = () => {
     setIsMiniPlaying((prevIsPlaying) => !prevIsPlaying);
   };
 
-  const handleTimeUpdate = () => {
-    const currentTime = audioRef.current.currentTime;
-    const duration = audioRef.current.duration;
-    setProgressMini((currentTime / duration) * 100);
-  };
-
-  const handleProgressChange = (e) => {
-    const newProgress = e.target.value;
-    audioRef.current.currentTime = (newProgress / 100) * audioRef.current.duration;
-    setProgressMini(newProgress);
-  };
-
+  // Image transition function
   const handleImageTransition = (callback) => {
-    setIsFadingOut(true); 
+    setIsFadingOut(true);
     setTimeout(() => {
       callback();
-      setIsFadingOut(false); 
-    }, 350); 
+      setIsFadingOut(false);
+    }, 350);
+  };
+
+  // Format time in mm:ss format
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`;
   };
 
   return (
-    <div className="mini-wrapper">
+    <div className="mini-wrapper mapsMusicSlider">
       {/* Mini cover image */}
       <div className="mini-player">
         <img
@@ -71,22 +95,31 @@ const MiniPlayer = ({ attributes }) => {
 
       {/* Controller */}
       <div className='mini-controller'>
-        <div className='loveDiv'><GiSelfLove className="love" /></div>
-        <div className='linkDiv'><FaExternalLinkAlt className="link" /></div>
+        <div className='loveDiv'><GiSelfLove color={albumStyles?.controls?.miniIconColor} className="love" /></div>
+
+        {
+          isExternalLink && <div className='linkDiv'>
+            <a href={albumItems[currentMiniSongIdx].youtubeSrc} target={targetPage}><FaExternalLinkAlt color={albumStyles?.controls?.miniIconColor} className="link" /></a>
+          </div>
+        }
+
+
         {/* Backward button */}
-        <div onClick={handlePreviousSong} className='leftDiv' ><BiArrowToLeft className="leftArrow" />
+        <div onClick={handlePreviousSong} className='leftDiv' ><BiArrowToLeft color={albumStyles?.controls?.miniIconColor} className="leftArrow" />
         </div>
         {/* Forward button */}
-        <div onClick={handleNextSong} className='rightDiv'><BiArrowToRight className="rightArrow" />
+        <div onClick={handleNextSong} className='rightDiv'><BiArrowToRight color={albumStyles?.controls?.miniIconColor} className="rightArrow" />
         </div>
 
         {/* Play control button */}
         <div onClick={handlePlayPause}>
           {
-            isMiniPlaying ? <ImPause className="pauseCircle" /> : <ImPlay2 className="playCircle" />
+            isMiniPlaying ? <ImPause color={albumStyles?.controls?.miniIconColor} className="pauseCircle" /> : <ImPlay2 color={albumStyles?.controls?.miniIconColor} className="playCircle" />
           }
         </div>
       </div>
+
+
       <div className='mini-content'>
         <h2 className='mini-title'>{albumItems[currentMiniSongIdx].title}</h2>
         <h3 className='mini-name'>{albumItems[currentMiniSongIdx].name}</h3>
@@ -104,7 +137,7 @@ const MiniPlayer = ({ attributes }) => {
       </audio>
 
       <div className='progress-container'>
-        {/* <span className="current-time">{formatTime(currentTime)}</span> */}
+        <span className="current-time">{formatTime(currentMiniTime)}</span>
         <input
           type="range"
           value={progressMini ? progressMini : 0}
@@ -117,7 +150,7 @@ const MiniPlayer = ({ attributes }) => {
             background: `linear-gradient(to right, ${albumStyles?.progress?.progressBarColor} ${progressMini}%, ${albumStyles?.progress?.bg} ${progressMini}%)`,
           }}
         />
-        {/* <span className="duration-time">{formatTime(duration)}</span> */}
+        <span className="duration-time">{formatTime(duration)}</span>
       </div>
     </div>
   );

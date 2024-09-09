@@ -52,7 +52,9 @@
     "albumStyles": {
       "type": "object",
       "default": {
-        "background": {},
+        "background": {
+          "color": "#227B94"
+        },
         "border": {
           "radius": "5px"
         },
@@ -83,18 +85,25 @@
             "tablet": "",
             "mobile": ""
           },
-          "currentTimeColor": "#fff",
-          "durationTimeColor": "#fff",
-          "progressBarColor": "red"
+          "currentTimeColor": "#48CFCB",
+          "durationTimeColor": "#48CFCB",
+          "progressBarColor": "#16423C"
         },
         "controls": {
-          "background": "#8e8c91",
+          "background": {
+            "color": "#8e8c91"
+          },
           "width": {
             "desktop": "50px",
             "tablet": "",
             "mobile": ""
           },
-          "color": "#ddd"
+          "color": "#ddd",
+          "miniIconColor": "#acb8cc",
+          "hoverMiniIconColor": "#4527a4",
+          "hoverBgColor": {
+            "color": "#fff"
+          }
         }
       }
     },

@@ -3,9 +3,11 @@ import { getBoxCss } from '../../utils/functions';
 
 const Style = ({ id, attributes }) => {
 	const { albumStyles, coverStyles } = attributes;
-	const { background, border, titleTypo, nameTypo, titleColor, nameColor, titlePadding, namePadding, progress, controls } = albumStyles;
+	const { background, border, titleTypo, nameTypo, titleColor, nameColor, progress, controls } = albumStyles;
 	const { coverBorder } = coverStyles;
 	const { bg, durationTimeColor, currentTimeColor } = progress;
+
+	console.log("Controls object style here", controls);
 
 	const mainSl = `#${id}`;
 	const musicSliderSl = `${mainSl} .mapsMusicSlider`;
@@ -19,10 +21,37 @@ const Style = ({ id, attributes }) => {
 	const currentTimeSl = `${progressContainerSl} .current-time`;
 	const durationTimeSl = `${progressContainerSl} .duration-time`;
 
+	// MiniPlayer select class & id
+
+	const miniHeadingSl = `${musicSliderSl} .mini-content .mini-title`;
+	const miniPragraphSl = `${musicSliderSl} .mini-content .mini-name`;
+	const miniProgressSl = `${musicSliderSl} .progress-container #progress`;
+	const miniProgressContainerSl = `${musicSliderSl} .progress-container`;
+	const miniCurrentTimeSl = `${musicSliderSl} .progress-container .current-time`;
+	const miniDurationTimeSl = `${musicSliderSl} .progress-container .duration-time`;
+
+	// icon selector all here
+	const miniController = `${musicSliderSl} .mini-controller`;
+
+	const loveDiv = `${miniController} .loveDiv`;
+	const linkDiv = `${miniController} .linkDiv`;
+	const leftDiv = `${miniController} .leftDiv`;
+	const rightDiv = `${miniController} .rightDiv`;
+
+	// icon color selector
+	const loveIcon = `${loveDiv} .love`;
+	const linkIcon = `${linkDiv} .link`;
+	const leftIcon = `${leftDiv} .leftArrow`;
+	const rightIcon = `${rightDiv} .rightArrow`;
+
+
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 		${getTypoCSS(headingSl, titleTypo)?.styles}
 		${getTypoCSS(paragraphSl, nameTypo)?.styles}
+
+		${getTypoCSS(miniHeadingSl, titleTypo)?.styles}
+		${getTypoCSS(miniPragraphSl, nameTypo)?.styles}
 
 		${musicSliderSl}{
 			${getBackgroundCSS(background)}
@@ -36,36 +65,58 @@ const Style = ({ id, attributes }) => {
 		}
 		${headingSl}{
 			color: ${titleColor};
-			padding-top: ${titlePadding.top};
-         	padding-bottom: ${titlePadding.bottom};
-            padding-left: ${titlePadding.left};
-            padding-right: ${titlePadding.right};
+		}
+		${miniHeadingSl}{
+			color: ${titleColor};
 		}
 		${paragraphSl}{
 			color: ${nameColor};
-			padding-top: ${namePadding.top}px;
-         	padding-bottom: ${namePadding.bottom}px;
-            padding-left: ${namePadding.left}px;
-            padding-right: ${namePadding.right}px;
 		}
-		
+		${miniPragraphSl}{
+			color: ${nameColor};
+		}
 		${progressSl}{
+			${getBackgroundCSS(bg)}
+		}
+		${miniProgressSl}{
 			${getBackgroundCSS(bg)}
 		}
 		${progressContainerSl}{
 		width: ${albumStyles.progress.width.desktop};
 		}
+		${miniProgressContainerSl}{
+		width: ${albumStyles.progress.width.desktop};
+		}
 		${currentTimeSl}{
 		  color: ${currentTimeColor};
+		}
+		${miniCurrentTimeSl}{
+			color: ${currentTimeColor};
 		}
 		${durationTimeSl}{
 		 color: ${durationTimeColor};
 		}
+		${miniDurationTimeSl}{
+			color: ${durationTimeColor};
+		}
 		${controlSl} button{
-		width: ${albumStyles.controls.width.desktop};
+			width: ${albumStyles.controls.width.desktop};
 		 ${getBackgroundCSS(controls?.background)}
 		}
+		
+		${loveDiv}:hover,
+		${linkDiv}:hover,
+		${leftDiv}:hover,
+		${rightDiv}:hover{
+			${getBackgroundCSS(controls?.hoverBgColor)}
+		}
 
+		${loveIcon}:hover,
+		${linkIcon}:hover,
+		${leftIcon}:hover,
+		${rightIcon}:hover{
+			color: ${controls?.hoverMiniIconColor};
+		}
 
 
 		@media only screen and (min-width:641px) and (max-width: 1024px){
@@ -94,7 +145,7 @@ const Style = ({ id, attributes }) => {
 		${controlSl} button{
 		  width: ${albumStyles.controls.width.mobile};
 		}
-        }
+  }
 	`}} />;
 }
 export default Style;

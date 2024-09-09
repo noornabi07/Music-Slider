@@ -561,13 +561,11 @@ button.swiper-pagination-bullet {
   padding-top: 9px;
   padding-right: 10px;
   text-align: center;
-  color: red;
 }
 .wp-block-maps-music-slider .duration-time {
   padding-top: 9px;
   padding-left: 10px;
   text-align: center;
-  color: red;
 }
 .wp-block-maps-music-slider #progress {
   -moz-appearance: none;
@@ -639,7 +637,6 @@ button.swiper-pagination-bullet {
   width: 100%;
   height: inherit;
   border-radius: 8px;
-  background-color: #eef3f7;
   box-shadow: 0px 9px 25px -5px rgba(50, 88, 130, 0.32);
   margin-top: 30px;
   padding: 40px;
@@ -650,7 +647,7 @@ button.swiper-pagination-bullet {
   justify-content: center;
 }
 .wp-block-maps-music-slider .mini-player img {
-  width: 83%;
+  max-width: 80%;
   height: 300px;
   border-radius: 8px;
   box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
@@ -688,10 +685,6 @@ button.swiper-pagination-bullet {
 }
 .wp-block-maps-music-slider .mini-controller .love {
   font-size: 16px;
-  color: #acb8cc;
-}
-.wp-block-maps-music-slider .mini-controller .love:hover {
-  color: #4527a4;
 }
 .wp-block-maps-music-slider .mini-controller .loveDiv {
   background-color: transparent;
@@ -704,15 +697,10 @@ button.swiper-pagination-bullet {
   cursor: pointer;
 }
 .wp-block-maps-music-slider .mini-controller .loveDiv:hover {
-  background-color: white;
   transform: scale(1.1);
 }
 .wp-block-maps-music-slider .mini-controller .link {
   font-size: 13px;
-  color: #acb8cc;
-}
-.wp-block-maps-music-slider .mini-controller .link:hover {
-  color: #4527a4;
 }
 .wp-block-maps-music-slider .mini-controller .linkDiv {
   background-color: transparent;
@@ -720,21 +708,12 @@ button.swiper-pagination-bullet {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 10px 14px;
   border-radius: 50%;
   cursor: pointer;
 }
 .wp-block-maps-music-slider .mini-controller .linkDiv:hover {
-  background-color: white;
   transform: scale(1.1);
-}
-.wp-block-maps-music-slider .leftArrow,
-.wp-block-maps-music-slider .rightArrow {
-  color: #acb8cc;
-}
-.wp-block-maps-music-slider .leftArrow:hover,
-.wp-block-maps-music-slider .rightArrow:hover {
-  color: #4527a4;
 }
 .wp-block-maps-music-slider .leftDiv,
 .wp-block-maps-music-slider .rightDiv {
@@ -749,7 +728,6 @@ button.swiper-pagination-bullet {
 }
 .wp-block-maps-music-slider .leftDiv:hover,
 .wp-block-maps-music-slider .rightDiv:hover {
-  background-color: white;
   transform: scale(1.1);
 }
 .wp-block-maps-music-slider .playCircle {

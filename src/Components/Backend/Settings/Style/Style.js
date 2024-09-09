@@ -8,16 +8,16 @@ import { Device } from '../../../Panel/Device/Device';
 
 const Style = ({ attributes, setAttributes }) => {
   const [device, setDevice] = useState('desktop');
-  const { albumStyles } = attributes;
+  const { albumStyles, albumOptions } = attributes;
   const { background, border, titleTypo, nameTypo, titleColor, nameColor, progress, controls } = albumStyles;
   const { bg, currentTimeColor, durationTimeColor, progressBarColor } = progress;
 
   return <>
-    
+
     {/* General setting */}
     <PanelBody title={__("General Style", "music-slider")} initialOpen={false}>
       {/* Album Background Setting */}
-      <Background label={__('Player Background', 'music-slider')} value={background} onChange={val => {
+      <Background label={__('Player Background', 'music-slider')} value={background} defaults={{ color: '#227B94' }} onChange={val => {
         const newStyles = produce(albumStyles, draft => {
           draft.background = val;
         })
@@ -71,7 +71,7 @@ const Style = ({ attributes, setAttributes }) => {
         const newStyles = produce(albumStyles, draft => {
           draft.titleTypo = val;
         })
-        setAttributes({albumStyles: newStyles})
+        setAttributes({ albumStyles: newStyles })
       }} defaults={{ fontSize: 24 }} />
 
 
@@ -145,29 +145,60 @@ const Style = ({ attributes, setAttributes }) => {
     </PanelBody>
 
     {/* Album Controls */}
-    <PanelBody title={__("Controls", "music-slider")} initialOpen={false}>
-      {/* Control button background */}
-      <Background label={__('Control Button BG', 'music-slider')} value={controls?.background} onChange={val => {
-        const newStyles = produce(albumStyles, draft => {
-          draft.controls.background = val;
-        })
-        setAttributes({ albumStyles: newStyles });
-      }} defaults={{ color: '#8e8c91' }} />
 
-      <BColor label={__('Control Icon Color', 'music-slider')} value={controls?.color} onChange={val => {
-        const newStyles = produce(albumStyles, draft => {
-          draft.controls.color = val;
-        })
-        setAttributes({ albumStyles: newStyles });
-      }} defaultColor='#ddd' />
+    {
+      albumOptions?.activeThemes === "default" ? <PanelBody title={__("Controls", "music-slider")} initialOpen={false}>
+        {/* Control button background */}
 
-      {/* control button width */}
-      <PanelRow>
-        <Label className='mb5'>{__('Backward Forward Width:', 'music-slider')}</Label>
-        <Device onChange={val => setDevice(val)} />
-      </PanelRow>
-      <UnitControl value={albumStyles.controls.width[device]} onChange={val => setAttributes({ albumStyles: updateData(albumStyles, val, "controls", "width", device) })} beforeIcon='grid-view' max={100} step={1}></UnitControl>
-    </PanelBody>
+        <Background label={__('Control Button BG', 'music-slider')} value={controls?.background} onChange={val => {
+          const newStyles = produce(albumStyles, draft => {
+            draft.controls.background = val;
+          })
+          setAttributes({ albumStyles: newStyles });
+        }} defaults={{ color: '#8e8c91' }} />
+
+
+        <BColor label={__('Control Icon Color', 'music-slider')} value={controls?.color} onChange={val => {
+          const newStyles = produce(albumStyles, draft => {
+            draft.controls.color = val;
+          })
+          setAttributes({ albumStyles: newStyles });
+        }} defaultColor='#ddd' />
+
+        {/* control button width */}
+        <PanelRow>
+          <Label className='mb5'>{__('Control Icon Size:', 'music-slider')}</Label>
+          <Device onChange={val => setDevice(val)} />
+        </PanelRow>
+        <UnitControl value={albumStyles.controls.width[device]} onChange={val => setAttributes({ albumStyles: updateData(albumStyles, val, "controls", "width", device) })} beforeIcon='grid-view' max={100} step={1}></UnitControl>
+      </PanelBody>
+        :
+        <PanelBody title={__("Controls", "music-slider")} initialOpen={false}>
+          <BColor label={__('Control Icon Color', 'music-slider')} value={controls?.miniIconColor} onChange={val => {
+          const newStyles = produce(albumStyles, draft => {
+            draft.controls.miniIconColor = val;
+          })
+          setAttributes({ albumStyles: newStyles });
+          }} defaultColor='#acb8cc' />
+
+          {/* Hover Icon Color */}
+          <BColor label={__('Hover Icon Color', 'music-slider')} value={controls?.hoverMiniIconColor} onChange={val => {
+          const newStyles = produce(albumStyles, draft => {
+            draft.controls.hoverMiniIconColor = val;
+          })
+          setAttributes({ albumStyles: newStyles });
+          }} defaultColor='#4527a4' />
+
+
+          {/* Hover Background Color */}
+          <Background label={__('Hover Background', 'music-slider')} value={controls?.hoverBgColor} onChange={val => {
+            const newStyles = produce(albumStyles, draft => {
+              draft.controls.hoverBgColor = val;
+            })
+            setAttributes({ albumStyles: newStyles });
+          }} defaults={{ color: '#fff' }} />
+      </PanelBody>
+    }
 
   </>
 };
