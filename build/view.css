@@ -636,8 +636,8 @@ button.swiper-pagination-bullet {
   max-width: 100%;
 }
 .wp-block-maps-music-slider .mini-wrapper {
-  width: 80%;
-  height: 65vh;
+  width: 100%;
+  height: inherit;
   border-radius: 8px;
   background-color: #eef3f7;
   box-shadow: 0px 9px 25px -5px rgba(50, 88, 130, 0.32);
@@ -651,7 +651,7 @@ button.swiper-pagination-bullet {
 }
 .wp-block-maps-music-slider .mini-player img {
   width: 83%;
-  height: 250px;
+  height: 300px;
   border-radius: 8px;
   box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
   margin-top: -90px;
@@ -684,6 +684,7 @@ button.swiper-pagination-bullet {
   display: flex;
   gap: 4px;
   align-items: center;
+  justify-content: center;
 }
 .wp-block-maps-music-slider .mini-controller .love {
   font-size: 16px;
@@ -760,6 +761,12 @@ button.swiper-pagination-bullet {
   font-size: 65px;
   margin-left: 110px;
   cursor: pointer;
+}
+.wp-block-maps-music-slider .mini-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .wp-block-maps-music-slider .mini-title {
   font-family: serif;

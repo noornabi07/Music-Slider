@@ -87,7 +87,7 @@ const MiniPlayer = ({ attributes }) => {
           }
         </div>
       </div>
-      <div>
+      <div className='mini-content'>
         <h2 className='mini-title'>{albumItems[currentMiniSongIdx].title}</h2>
         <h3 className='mini-name'>{albumItems[currentMiniSongIdx].name}</h3>
       </div>

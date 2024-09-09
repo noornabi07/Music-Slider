@@ -244,7 +244,7 @@ const Edit = (props) => {
 								</button>
 							</div>
 						</div>
-					</div> : <MiniPlayer attributes={attributes} handleSeek={handleSeek} progress={progress} audioRef={audioRef} updateProgress={updateProgress} formatTime={formatTime} currentTime={currentTime} duration={duration} isPlaying={isPlaying} playPauseSong={playPauseSong} />
+					</div> : <MiniPlayer attributes={attributes} />
 				}
 			</div>
 		</>

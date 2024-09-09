@@ -207,6 +207,140 @@ const getBoxCSS = (val = {}) => Object.values(val).join(' ');
 
 /***/ }),
 
+/***/ "./src/Components/Backend/MiniPlayer.js":
+/*!**********************************************!*\
+  !*** ./src/Components/Backend/MiniPlayer.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/icons */ "./src/utils/icons.js");
+
+
+
+const MiniPlayer = ({
+  attributes
+}) => {
+  const {
+    albumItems,
+    albumStyles
+  } = attributes;
+  const [currentMiniSongIdx, setCurrentMiniSongIdx] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [isMiniPlaying, setIsMiniPlaying] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [progressMini, setProgressMini] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const audioRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const [isFadingOut, setIsFadingOut] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isMiniPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isMiniPlaying, currentMiniSongIdx]);
+  const handleNextSong = () => {
+    handleImageTransition(() => {
+      setCurrentMiniSongIdx(prevIdx => (prevIdx + 1) % albumItems.length);
+      setIsMiniPlaying(true); // Automatically play the next song
+    });
+  };
+  const handlePreviousSong = () => {
+    handleImageTransition(() => {
+      setCurrentMiniSongIdx(prevIdx => prevIdx === 0 ? albumItems.length - 1 : prevIdx - 1);
+      setIsMiniPlaying(true); // Automatically play the previous song
+    });
+  };
+  const handlePlayPause = () => {
+    setIsMiniPlaying(prevIsPlaying => !prevIsPlaying);
+  };
+  const handleTimeUpdate = () => {
+    const currentTime = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+    setProgressMini(currentTime / duration * 100);
+  };
+  const handleProgressChange = e => {
+    const newProgress = e.target.value;
+    audioRef.current.currentTime = newProgress / 100 * audioRef.current.duration;
+    setProgressMini(newProgress);
+  };
+  const handleImageTransition = callback => {
+    setIsFadingOut(true);
+    setTimeout(() => {
+      callback();
+      setIsFadingOut(false);
+    }, 350);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mini-wrapper"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mini-player"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: albumItems[currentMiniSongIdx].coverSrc,
+    alt: albumItems[currentMiniSongIdx].title,
+    className: `scale-fade-out ${isFadingOut ? 'scale-fade-out-active' : 'fade-in-active'}`
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mini-controller"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "loveDiv"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.GiSelfLove, {
+    className: "love"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "linkDiv"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.FaExternalLinkAlt, {
+    className: "link"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: handlePreviousSong,
+    className: "leftDiv"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.BiArrowToLeft, {
+    className: "leftArrow"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: handleNextSong,
+    className: "rightDiv"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.BiArrowToRight, {
+    className: "rightArrow"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: handlePlayPause
+  }, isMiniPlaying ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.ImPause, {
+    className: "pauseCircle"
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.ImPlay2, {
+    className: "playCircle"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mini-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "mini-title"
+  }, albumItems[currentMiniSongIdx].title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "mini-name"
+  }, albumItems[currentMiniSongIdx].name)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("audio", {
+    ref: audioRef,
+    key: albumItems[currentMiniSongIdx]?.trackSrc,
+    onTimeUpdate: handleTimeUpdate,
+    onLoadedMetadata: handleTimeUpdate
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    src: albumItems[currentMiniSongIdx].trackSrc,
+    type: "audio/mpeg"
+  }), "Your browser does not support the audio element."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "progress-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "range",
+    value: progressMini ? progressMini : 0,
+    id: "progress",
+    onChange: handleProgressChange,
+    min: "0",
+    max: "100",
+    step: "0.1",
+    style: {
+      background: `linear-gradient(to right, ${albumStyles?.progress?.progressBarColor} ${progressMini}%, ${albumStyles?.progress?.bg} ${progressMini}%)`
+    }
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MiniPlayer);
+
+/***/ }),
+
 /***/ "./src/Components/Backend/SwiperSlider.js":
 /*!************************************************!*\
   !*** ./src/Components/Backend/SwiperSlider.js ***!
@@ -463,8 +597,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/icons */ "./src/utils/icons.js");
-/* harmony import */ var _Backend_SwiperSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Backend/SwiperSlider */ "./src/Components/Backend/SwiperSlider.js");
-/* harmony import */ var _Common_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Common/Style */ "./src/Components/Common/Style.js");
+/* harmony import */ var _Backend_MiniPlayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Backend/MiniPlayer */ "./src/Components/Backend/MiniPlayer.js");
+/* harmony import */ var _Backend_SwiperSlider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Backend/SwiperSlider */ "./src/Components/Backend/SwiperSlider.js");
+/* harmony import */ var _Common_Style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Common/Style */ "./src/Components/Common/Style.js");
+
 
 
 
@@ -505,16 +641,50 @@ const MusicSlider = ({
       setIsPlaying(false);
     }
   };
+
+  // useEffect(() => {
+  // 	const audio = audioRef.current;
+
+  // 	const handleLoadedMetadata = () => {
+  // 		setDuration(audio.duration);
+  // 	};
+
+  // 	audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+  // 	return () => {
+  // 		audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+  // 	};
+  // }, [audioRef]);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const audio = audioRef.current;
+    if (!audio) return; // Early return if audioRef.current is null
+
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
     };
-    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
-    return () => {
-      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    const handlePlayError = error => {
+      if (error.name === 'AbortError') {
+        console.warn('Audio play was interrupted because the media was removed from the document.');
+        // Handle the error or retry play here if necessary
+      }
     };
-  }, [audioRef]);
+
+    // Add event listener for loadedmetadata
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+    // Only attempt to play the audio if isPlaying is true
+    if (isPlaying) {
+      audio.play().catch(handlePlayError);
+    }
+
+    // Cleanup function to remove the event listeners
+    return () => {
+      if (audio) {
+        audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      }
+    };
+  }, [audioRef, albumItems[currentSongIdx]?.trackSrc, isPlaying, currentSongIdx]);
   const formatTime = time => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -567,11 +737,11 @@ const MusicSlider = ({
     const seekTime = event.target.value / 100 * audio.duration;
     audio.currentTime = seekTime;
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Common_Style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: attributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), albumOptions?.activeThemes === 'default' ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mapsMusicSlider"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Backend_SwiperSlider__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Backend_SwiperSlider__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: attributes,
     ref: swiperRef,
     playTrack: playTrack
@@ -685,7 +855,9 @@ const MusicSlider = ({
     color: controls?.color
   }), albumControl?.forward === "ten" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.IconForward, {
     color: controls?.color
-  }))))));
+  }))))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Backend_MiniPlayer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    attributes: attributes
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicSlider);
 

@@ -10956,16 +10956,7 @@ const Edit = props => {
   }), albumControl?.forward === "ten" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_6__.IconForward, {
     color: controls?.color
   }))))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MiniPlayer__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    attributes: attributes,
-    handleSeek: handleSeek,
-    progress: progress,
-    audioRef: audioRef,
-    updateProgress: updateProgress,
-    formatTime: formatTime,
-    currentTime: currentTime,
-    duration: duration,
-    isPlaying: isPlaying,
-    playPauseSong: playPauseSong
+    attributes: attributes
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
@@ -11074,7 +11065,9 @@ const MiniPlayer = ({
     className: "pauseCircle"
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_1__.ImPlay2, {
     className: "playCircle"
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mini-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "mini-title"
   }, albumItems[currentMiniSongIdx].title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: "mini-name"

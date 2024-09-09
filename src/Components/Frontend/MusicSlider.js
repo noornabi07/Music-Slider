@@ -1,4 +1,5 @@
 import { AiFillPlayCircle, AiOutlineBackward, AiOutlineForward, AiOutlinePause, BsFillPlayFill, Icon283Backward, Icon284Forward2, IconBackward, IconBackwarded, IconFastBackward, IconFastForward, IconForward, IconMediaPauseOutline, IconMusic_play_button, IconPauseCircle, IconPauseFill,IconPlay, IconPlayForwardSharp, IconPlayPause, IconPlaySquare } from "../../utils/icons";
+import MiniPlayer from "../Backend/MiniPlayer";
 import SwiperSlider from "../Backend/SwiperSlider";
 import Style from "../Common/Style";
 import { useRef, useState, useEffect } from 'react';
@@ -28,19 +29,51 @@ const MusicSlider = ({ attributes }) => {
 		}
 	};
 
+	// useEffect(() => {
+	// 	const audio = audioRef.current;
+
+	// 	const handleLoadedMetadata = () => {
+	// 		setDuration(audio.duration);
+	// 	};
+
+	// 	audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+	// 	return () => {
+	// 		audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+	// 	};
+	// }, [audioRef]);
+
 	useEffect(() => {
 		const audio = audioRef.current;
+
+		if (!audio) return; // Early return if audioRef.current is null
 
 		const handleLoadedMetadata = () => {
 			setDuration(audio.duration);
 		};
 
+		const handlePlayError = (error) => {
+			if (error.name === 'AbortError') {
+				console.warn('Audio play was interrupted because the media was removed from the document.');
+				// Handle the error or retry play here if necessary
+			}
+		};
+
+		// Add event listener for loadedmetadata
 		audio.addEventListener('loadedmetadata', handleLoadedMetadata);
 
+		// Only attempt to play the audio if isPlaying is true
+		if (isPlaying) {
+			audio.play().catch(handlePlayError);
+		}
+
+		// Cleanup function to remove the event listeners
 		return () => {
-			audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+			if (audio) {
+				audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+			}
 		};
-	}, [audioRef]);
+	}, [audioRef, albumItems[currentSongIdx]?.trackSrc, isPlaying, currentSongIdx]);
 
 	const formatTime = (time) => {
 		const minutes = Math.floor(time / 60);
@@ -109,93 +142,95 @@ const MusicSlider = ({ attributes }) => {
 
 		<Style attributes={attributes} />
 
-		<div className="mapsMusicSlider">
-			<SwiperSlider attributes={attributes} ref={swiperRef} playTrack={playTrack} />
+		{
+			albumOptions?.activeThemes === 'default' ? <div className="mapsMusicSlider">
+				<SwiperSlider attributes={attributes} ref={swiperRef} playTrack={playTrack} />
 
-			<div className="music-player">
-				{isExternalLink ? <a href={albumItems[currentSongIdx].youtubeSrc} target='_blank' rel='noopener noreferrer' className='heading'>{albumItems[currentSongIdx].title}</a> : <h2 className='heading'>{albumItems[currentSongIdx].title}</h2>}
-				<p>{albumItems[currentSongIdx].name}</p>
+				<div className="music-player">
+					{isExternalLink ? <a href={albumItems[currentSongIdx].youtubeSrc} target='_blank' rel='noopener noreferrer' className='heading'>{albumItems[currentSongIdx].title}</a> : <h2 className='heading'>{albumItems[currentSongIdx].title}</h2>}
+					<p>{albumItems[currentSongIdx].name}</p>
 
-				<audio
-					ref={audioRef}
-					onTimeUpdate={updateProgress}
-					onEnded={() => {
-						if (isAutoSlide) {
-							changeSong('forward');
-							swiperRef.current.slideTo((currentSongIdx + 1) % albumItems.length);
-						} else {
-							setIsPlaying(false);
-						}
-					}}
-				>
-					<source src={albumItems[currentSongIdx].trackSrc} type="audio/mpeg" />
-					Your browser does not support the audio element.
-				</audio>
-
-				<div className='progress-container'>
-					<span className="current-time">{formatTime(currentTime)}</span>
-					<input
-						type="range"
-						value={progress ? progress : 0}
-						id="progress"
-						onChange={handleSeek}
-						min="0"
-						max="100"
-						step="0.1"
-						style={{
-							background: `linear-gradient(to right, ${albumStyles?.progress?.progressBarColor} ${progress}%, ${albumStyles?.progress?.bg} ${progress}%)`,
-						}}
-					/>
-					<span className="duration-time">{formatTime(duration)}</span>
-				</div>
-
-				<div className="controls">
-					<button
-						className="backward"
-						onClick={() => {
-							changeSong('backward');
+					<audio
+						ref={audioRef}
+						onTimeUpdate={updateProgress}
+						onEnded={() => {
+							if (isAutoSlide) {
+								changeSong('forward');
+								swiperRef.current.slideTo((currentSongIdx + 1) % albumItems.length);
+							} else {
+								setIsPlaying(false);
+							}
 						}}
 					>
-						{albumControl?.backward === "first" && <AiOutlineBackward color={controls?.color} />}
-						{albumControl?.backward === "third" && <IconBackward color={controls?.color} />}
-						{albumControl?.backward === "five" && <IconFastBackward color={controls?.color} />}
-						{albumControl?.backward === "seven" && <Icon283Backward color={controls?.color} />}
-						{albumControl?.backward === "nine" && <IconBackwarded color={controls?.color} />}
-					</button>
-					<button onClick={playPauseSong}>
-						{
-							isPlaying ?
-								<>
-									{albumControl?.pause === "pFirst" && <AiOutlinePause id="controlIcon" color={controls?.color} />}
-									{albumControl?.pause === "pSecond" && <IconPauseCircle id="controlIcon" color={controls?.color} />}
-									{albumControl?.pause === "pThird" && <IconPlayPause id="controlIcon" color={controls?.color} />}
-									{albumControl?.pause === "pFour" && <IconPauseFill id="controlIcon" color={controls?.color} />}
-									{albumControl?.pause === "pFive" && <IconMediaPauseOutline id="controlIcon" color={controls?.color} />}
-								</>
-								: <>
-									{albumControl?.play === "sFirst" && <AiFillPlayCircle id="controlIcon" color={controls?.color} />}
-									{albumControl?.play === "sSecond" && <BsFillPlayFill style={{ marginLeft: "3px" }} color={controls?.color} id="controlIcon" />}
-									{albumControl?.play === "sThird" && <IconPlaySquare id="controlIcon" color={controls?.color} />}
-									{albumControl?.play === "sFour" && <IconPlay id="controlIcon" style={{ marginLeft: "3px" }} color={controls?.color} />}
-									{albumControl?.play === "sFive" && <IconMusic_play_button id="controlIcon" color={controls?.color} />}
-								</>
-						}
-					</button>
-					<button
-						className="forward"
-						onClick={() => {
-							changeSong('forward');
-						}}
-					>
-						{albumControl?.forward === "second" && <AiOutlineForward color={controls?.color} />}
-						{albumControl?.forward === "four" && <IconPlayForwardSharp color={controls?.color} />}
-						{albumControl?.forward === "six" && <IconFastForward color={controls?.color} />}
-						{albumControl?.forward === "eight" && <Icon284Forward2 color={controls?.color} />}
-						{albumControl?.forward === "ten" && <IconForward color={controls?.color} />}
-					</button>
+						<source src={albumItems[currentSongIdx].trackSrc} type="audio/mpeg" />
+						Your browser does not support the audio element.
+					</audio>
+
+					<div className='progress-container'>
+						<span className="current-time">{formatTime(currentTime)}</span>
+						<input
+							type="range"
+							value={progress ? progress : 0}
+							id="progress"
+							onChange={handleSeek}
+							min="0"
+							max="100"
+							step="0.1"
+							style={{
+								background: `linear-gradient(to right, ${albumStyles?.progress?.progressBarColor} ${progress}%, ${albumStyles?.progress?.bg} ${progress}%)`,
+							}}
+						/>
+						<span className="duration-time">{formatTime(duration)}</span>
+					</div>
+
+					<div className="controls">
+						<button
+							className="backward"
+							onClick={() => {
+								changeSong('backward');
+							}}
+						>
+							{albumControl?.backward === "first" && <AiOutlineBackward color={controls?.color} />}
+							{albumControl?.backward === "third" && <IconBackward color={controls?.color} />}
+							{albumControl?.backward === "five" && <IconFastBackward color={controls?.color} />}
+							{albumControl?.backward === "seven" && <Icon283Backward color={controls?.color} />}
+							{albumControl?.backward === "nine" && <IconBackwarded color={controls?.color} />}
+						</button>
+						<button onClick={playPauseSong}>
+							{
+								isPlaying ?
+									<>
+										{albumControl?.pause === "pFirst" && <AiOutlinePause id="controlIcon" color={controls?.color} />}
+										{albumControl?.pause === "pSecond" && <IconPauseCircle id="controlIcon" color={controls?.color} />}
+										{albumControl?.pause === "pThird" && <IconPlayPause id="controlIcon" color={controls?.color} />}
+										{albumControl?.pause === "pFour" && <IconPauseFill id="controlIcon" color={controls?.color} />}
+										{albumControl?.pause === "pFive" && <IconMediaPauseOutline id="controlIcon" color={controls?.color} />}
+									</>
+									: <>
+										{albumControl?.play === "sFirst" && <AiFillPlayCircle id="controlIcon" color={controls?.color} />}
+										{albumControl?.play === "sSecond" && <BsFillPlayFill style={{ marginLeft: "3px" }} color={controls?.color} id="controlIcon" />}
+										{albumControl?.play === "sThird" && <IconPlaySquare id="controlIcon" color={controls?.color} />}
+										{albumControl?.play === "sFour" && <IconPlay id="controlIcon" style={{ marginLeft: "3px" }} color={controls?.color} />}
+										{albumControl?.play === "sFive" && <IconMusic_play_button id="controlIcon" color={controls?.color} />}
+									</>
+							}
+						</button>
+						<button
+							className="forward"
+							onClick={() => {
+								changeSong('forward');
+							}}
+						>
+							{albumControl?.forward === "second" && <AiOutlineForward color={controls?.color} />}
+							{albumControl?.forward === "four" && <IconPlayForwardSharp color={controls?.color} />}
+							{albumControl?.forward === "six" && <IconFastForward color={controls?.color} />}
+							{albumControl?.forward === "eight" && <Icon284Forward2 color={controls?.color} />}
+							{albumControl?.forward === "ten" && <IconForward color={controls?.color} />}
+						</button>
+					</div>
 				</div>
-			</div>
-		</div>
+			</div> : <MiniPlayer attributes={attributes} />
+		}
 
 	</>
 }
